@@ -12,9 +12,17 @@ import {
   Link as MuiLink,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
+import useForm from '../hooks/useForm';
+import { signUpUser } from '../services/users';
+import { useState } from 'react';
 
 function Auth({ nextStep, signUp }) {
-  const signing = signUp ? 'Sign Up' : 'Sign In';
+  const [error, setError] = useState('');
+  const { formState, handleChange, clearForm } = useForm({
+    email: '',
+    password: '',
+  });
+  const authType = signUp ? 'Sign Up' : 'Sign In';
   function Copyright(props) {
     return (
       <Typography
@@ -33,6 +41,19 @@ function Auth({ nextStep, signUp }) {
     );
   }
 
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      if (signUp) {
+        await signUpUser(formState);
+        nextStep();
+      }
+    } catch (error) {
+      setError(error.message);
+    }
+    clearForm();
+  };
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -48,9 +69,9 @@ function Auth({ nextStep, signUp }) {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          {signing}
+          {authType}
         </Typography>
-        <Box component="form" noValidate sx={{ mt: 1 }}>
+        <Box onSubmit={handleSubmit} component="form" noValidate sx={{ mt: 1 }}>
           <TextField
             margin="normal"
             required
@@ -60,6 +81,8 @@ function Auth({ nextStep, signUp }) {
             name="email"
             autoComplete="email"
             autoFocus
+            value={formState.email}
+            onChange={handleChange}
           />
           <TextField
             margin="normal"
@@ -70,9 +93,10 @@ function Auth({ nextStep, signUp }) {
             type="password"
             id="password"
             autoComplete="current-password"
+            value={formState.password}
+            onChange={handleChange}
           />
           <Button
-            onClick={nextStep}
             type="submit"
             fullWidth
             variant="contained"
@@ -84,14 +108,13 @@ function Auth({ nextStep, signUp }) {
               },
             }}
           >
-            {signing}
+            {authType}
           </Button>
           <Grid container>
             <Grid item>
-              {/*for error message}
-              {/* <Typography color={'error'} variant="subtitle2">
-                {errorMessage}
-              </Typography> */}
+              <Typography color={'error'} variant="subtitle2">
+                {error}
+              </Typography>
             </Grid>
             <Grid item>
               <Link to={signUp ? `/signIn` : `/`} variant="body2">

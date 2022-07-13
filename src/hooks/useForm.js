@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 
 export default function useForm(inputs = {}) {
   const [formState, setFormState] = useState({ ...inputs });
@@ -11,6 +12,7 @@ export default function useForm(inputs = {}) {
         [name]: value,
       };
     });
+    console.log('formState', formState);
   };
 
   const clearForm = () => {

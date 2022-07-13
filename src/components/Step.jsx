@@ -4,7 +4,6 @@ import Auth from './Auth';
 
 function SignUpStep() {
   const [activeStep, setActiveStep] = useState(0);
-  const [signUp, setSignUp] = useState(true);
 
   const nextStep = () => {
     if (activeStep <= 1) setActiveStep((prevStep) => prevStep + 1);
@@ -23,7 +22,7 @@ function SignUpStep() {
         </Step>
       </Stepper>
       <Container>
-        {activeStep === 0 && <Auth nextStep={nextStep} signUp={signUp} />}
+        {activeStep === 0 && <Auth nextStep={nextStep} signUp={true} />}
       </Container>
     </Container>
   );
