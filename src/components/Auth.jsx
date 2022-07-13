@@ -11,13 +11,14 @@ import {
   Typography,
   Link as MuiLink,
 } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import useForm from '../hooks/useForm';
-import { signUpUser } from '../services/users';
+import { signInUser, signUpUser } from '../services/users';
 import { useState } from 'react';
 
 function Auth({ nextStep, signUp }) {
   const [error, setError] = useState('');
+  const history = useHistory();
   const { formState, handleChange, clearForm } = useForm({
     email: '',
     password: '',
@@ -47,11 +48,15 @@ function Auth({ nextStep, signUp }) {
       if (signUp) {
         await signUpUser(formState);
         nextStep();
+      } else {
+        await signInUser(formState);
+        console.log('Signed in');
+        //history.push(/progress)
       }
     } catch (error) {
+      formState.password = '';
       setError(error.message);
     }
-    clearForm();
   };
 
   return (

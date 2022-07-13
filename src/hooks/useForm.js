@@ -12,7 +12,6 @@ export default function useForm(inputs = {}) {
         [name]: value,
       };
     });
-    console.log('formState', formState);
   };
 
   const clearForm = () => {
