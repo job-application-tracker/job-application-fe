@@ -13,7 +13,8 @@ import {
 } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-function Auth({ nextStep }) {
+function Auth({ nextStep, signUp }) {
+  const signing = signUp ? 'Sign Up' : 'Sign In';
   function Copyright(props) {
     return (
       <Typography
@@ -47,7 +48,7 @@ function Auth({ nextStep }) {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign up
+          {signing}
         </Typography>
         <Box component="form" noValidate sx={{ mt: 1 }}>
           <TextField
@@ -83,7 +84,7 @@ function Auth({ nextStep }) {
               },
             }}
           >
-            Sign Up
+            {signing}
           </Button>
           <Grid container>
             <Grid item>
@@ -93,8 +94,10 @@ function Auth({ nextStep }) {
               </Typography> */}
             </Grid>
             <Grid item>
-              <Link to={`/signIn`} variant="body2">
-                {'Already have an account? Sign In'}
+              <Link to={signUp ? `/signIn` : `/`} variant="body2">
+                {signUp
+                  ? `Already have an account? Sign In`
+                  : "Don't have an account? Sign Up"}
               </Link>
             </Grid>
           </Grid>
