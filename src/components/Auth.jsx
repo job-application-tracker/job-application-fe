@@ -1,4 +1,3 @@
-import { StayPrimaryLandscape } from '@mui/icons-material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 
 import {
@@ -14,7 +13,7 @@ import {
 } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-function Auth() {
+function Auth({ nextStep }) {
   function Copyright(props) {
     return (
       <Typography
@@ -72,6 +71,7 @@ function Auth() {
             autoComplete="current-password"
           />
           <Button
+            onClick={nextStep}
             type="submit"
             fullWidth
             variant="contained"

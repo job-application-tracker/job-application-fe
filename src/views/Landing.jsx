@@ -1,10 +1,11 @@
 import React from 'react';
-import Auth from '../components/Auth';
+// import Auth from '../components/Auth';
+import Step from '../components/Step';
 
 function Landing() {
   return (
     <div>
-      <Auth />
+      <Step />
     </div>
   );
 }

@@ -1,5 +1,12 @@
 import Landing from './views/Landing';
+import { Route, Switch } from 'react-router-dom';
 
 export default function App() {
-  return <Landing />;
+  return (
+    <Switch>
+      <Route>
+        <Landing />
+      </Route>
+    </Switch>
+  );
 }
