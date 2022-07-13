@@ -11,12 +11,12 @@ import {
   Typography,
   Link as MuiLink,
 } from '@mui/material';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import useForm from '../hooks/useForm';
 import { signInUser, signUpUser } from '../services/users';
 import { useState } from 'react';
 
-function Auth({ nextStep, signUp }) {
+function Auth({ nextStep, signUp, setSignUp }) {
   const [error, setError] = useState('');
   const history = useHistory();
   const { formState, handleChange, clearForm } = useForm({
@@ -51,7 +51,7 @@ function Auth({ nextStep, signUp }) {
       } else {
         await signInUser(formState);
         console.log('Signed in');
-        //history.push(/progress)
+        history.push('/progress');
       }
     } catch (error) {
       formState.password = '';
@@ -122,11 +122,11 @@ function Auth({ nextStep, signUp }) {
               </Typography>
             </Grid>
             <Grid item>
-              <Link to={signUp ? `/signIn` : `/`} variant="body2">
+              <p onClick={() => setSignUp(!signUp)} variant="body2">
                 {signUp
                   ? `Already have an account? Sign In`
                   : "Don't have an account? Sign Up"}
-              </Link>
+              </p>
             </Grid>
           </Grid>
         </Box>
