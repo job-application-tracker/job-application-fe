@@ -6,10 +6,16 @@ const UserContext = createContext();
 const UserProvider = ({ children }) => {
   const defaultValue = { email: null };
   const [currentUser, setCurrentUser] = useState(defaultValue);
+  const [activeStep, setActiveStep] = useState(0);
+
+  const nextStep = () => {
+    if (activeStep <= 1) setActiveStep((prevStep) => prevStep + 1);
+  };
 
   const logOut = async () => {
     await signOut();
     setCurrentUser(defaultValue);
+    setActiveStep(0);
   };
 
   const acquireUser = async () => {
@@ -26,7 +32,9 @@ const UserProvider = ({ children }) => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ currentUser, acquireUser, logOut }}>
+    <UserContext.Provider
+      value={{ currentUser, acquireUser, logOut, activeStep, nextStep }}
+    >
       {children}
     </UserContext.Provider>
   );

@@ -1,24 +1,17 @@
 import { Stepper, Step, StepLabel, Container } from '@mui/material';
 import React, { useState } from 'react';
+import { useUserContext } from '../context/userContext';
 import Auth from './Auth';
 import GoalsForm from './GoalsForm';
 
 function SignUpStep({ signUp, setSignUp }) {
-  const [activeStep, setActiveStep] = useState(0);
-
-  const nextStep = () => {
-    if (activeStep <= 1) setActiveStep((prevStep) => prevStep + 1);
-  };
+  const { activeStep, nextStep } = useUserContext();
 
   return (
     <Container maxWidth="sm">
       <Stepper activeStep={activeStep}>
-        <Step>
-          <StepLabel>first</StepLabel>
-        </Step>
-        <Step>
-          <StepLabel>second</StepLabel>
-        </Step>
+        <Step></Step>
+        <Step></Step>
       </Stepper>
       <Container>
         {activeStep === 0 && (
