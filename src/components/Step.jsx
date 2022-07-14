@@ -4,7 +4,7 @@ import Auth from './Auth';
 import GoalsForm from './GoalsForm';
 
 function SignUpStep({ signUp, setSignUp }) {
-  const [activeStep, setActiveStep] = useState(1);
+  const [activeStep, setActiveStep] = useState(0);
 
   const nextStep = () => {
     if (activeStep <= 1) setActiveStep((prevStep) => prevStep + 1);

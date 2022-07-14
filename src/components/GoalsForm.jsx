@@ -19,8 +19,11 @@ import CodeRoundedIcon from '@mui/icons-material/CodeRounded';
 import GroupsRoundedIcon from '@mui/icons-material/GroupsRounded';
 import ContactPhoneRoundedIcon from '@mui/icons-material/ContactPhoneRounded';
 import HandshakeIcon from '@mui/icons-material/Handshake';
+import { useUserContext } from '../context/userContext';
 
 export default function GoalsForm() {
+  const { currentUser } = useUserContext();
+  console.log('currentUser', currentUser);
   //TODO: autofill values from user table response, css, accessibility
   return (
     <Container>

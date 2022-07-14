@@ -27,3 +27,16 @@ export async function signInUser({ email, password }) {
   }
   return await user.json();
 }
+
+export async function getUser() {
+  try {
+    const user = await fetch(url + '/api/v1/users/me', {
+      credentials: 'include',
+    });
+    const userData = await user.json();
+    return userData;
+  } catch (error) {
+    console.log(e.message);
+    return null;
+  }
+}
