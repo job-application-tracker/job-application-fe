@@ -4,13 +4,26 @@ import { fetchJobs } from '../services/jobs';
 export const JobContext = createContext();
 
 export const JobProvider = ({ children }) => {
-  const [jobs, setJobs] = useState([]);
+  const [status, setStatus] = useState({
+    Saved: {},
+    Applied: {},
+    Interviewing: {},
+    Accepted: {},
+    Ghosted: {},
+    Rejected: {},
+  });
 
   useEffect(() => {
     const getJobs = async () => {
       const data = await fetchJobs();
-      console.log('data', data);
-      setJobs(data);
+      for (const key in status) {
+        const list = data.filter((job) => job.status === key);
+        status[key] = {
+          id: key,
+          list: list,
+        };
+      }
+      console.log('status', status);
     };
     getJobs();
   }, []);
