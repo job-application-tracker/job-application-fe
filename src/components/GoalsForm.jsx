@@ -20,9 +20,13 @@ import GroupsRoundedIcon from '@mui/icons-material/GroupsRounded';
 import ContactPhoneRoundedIcon from '@mui/icons-material/ContactPhoneRounded';
 import HandshakeIcon from '@mui/icons-material/Handshake';
 import { useUserContext } from '../context/userContext';
+import useForm from '../hooks/useForm';
 
 export default function GoalsForm() {
   const { currentUser } = useUserContext();
+  const { formState } = useForm();
+
+  const handleChange = () => {};
   console.log('currentUser', currentUser);
   //TODO: autofill values from user table response, css, accessibility
   return (
@@ -41,6 +45,7 @@ export default function GoalsForm() {
             <Box>
               <ListItemText primary="How many applications do you plan to submit?" />
               <TextField
+                value={currentUser.appGoal}
                 inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
                 /* TODO: add accessibility arrows, labels, etc */
               />
@@ -55,6 +60,7 @@ export default function GoalsForm() {
               <ListItemText primary="How many networking chats do you plan to have?" />
 
               <TextField
+                value={currentUser.networkGoal}
                 inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
                 /* TODO: add accessibility arrows, labels, etc */
               />
@@ -69,6 +75,7 @@ export default function GoalsForm() {
               <ListItemText primary="How many meetups do you plan to attend?" />
 
               <TextField
+                value={currentUser.meetupGoal}
                 inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
                 /* TODO: add accessibility arrows, labels, etc */
               />
@@ -83,6 +90,7 @@ export default function GoalsForm() {
               <ListItemText primary="How many new LinkedIn connections do you plan to make?" />
 
               <TextField
+                value={currentUser.linkedinGoal}
                 inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
                 /* TODO: add accessibility arrows, labels, etc */
               />
@@ -98,6 +106,7 @@ export default function GoalsForm() {
               <ListItemText primary="How many hours do you plan to work on code?" />
 
               <TextField
+                value={currentUser.codeGoal}
                 inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
                 /* TODO: add accessibility arrows, labels, etc */
               />
