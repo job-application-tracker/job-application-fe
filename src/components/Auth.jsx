@@ -19,12 +19,13 @@ import { useState } from 'react';
 import { useUserContext } from '../context/userContext';
 
 function Auth({ nextStep, signUp, setSignUp }) {
+  const [error, setError] = useState('');
   const history = useHistory();
   const { formState, handleChange, clearForm } = useForm({
     email: '',
     password: '',
   });
-  const { handleSubmit, error, setError } = useUserContext();
+  const { acquireUser, currentUser } = useUserContext();
   const authType = signUp ? 'Sign Up' : 'Sign In';
   function Copyright(props) {
     return (
@@ -44,28 +45,20 @@ function Auth({ nextStep, signUp, setSignUp }) {
     );
   }
 
-  // const handleSubmit = async (e) => {
-  //   try {
-  //     e.preventDefault();
-  //     if (signUp) {
-  //       await signUpUser(formState);
-  //       nextStep();
-  //     } else {
-  //       await signInUser(formState);
-  //       console.log('Signed in');
-  //       history.push('/progress');
-  //     }
-  //   } catch (error) {
-  //     formState.password = '';
-  //     setError(error.message);
-  //   }
-  // };
-
-  const handleFormSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     try {
-      await handleSubmit(e, formState, signUp, nextStep);
+      e.preventDefault();
+      if (signUp) {
+        await signUpUser(formState);
+        await acquireUser();
+        nextStep();
+      } else {
+        await signInUser(formState);
+        await acquireUser();
+        history.push('/progress');
+      }
     } catch (error) {
-      console.log(error);
+      formState.password = '';
       setError(error.message);
     }
   };
@@ -87,12 +80,7 @@ function Auth({ nextStep, signUp, setSignUp }) {
         <Typography component="h1" variant="h5">
           {authType}
         </Typography>
-        <Box
-          onSubmit={handleFormSubmit}
-          component="form"
-          noValidate
-          sx={{ mt: 1 }}
-        >
+        <Box onSubmit={handleSubmit} component="form" noValidate sx={{ mt: 1 }}>
           <TextField
             margin="normal"
             required
