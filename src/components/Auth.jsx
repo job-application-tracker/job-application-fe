@@ -10,6 +10,7 @@ import {
   TextField,
   Typography,
   Link as MuiLink,
+  ListItemSecondaryAction,
 } from '@mui/material';
 import { useHistory } from 'react-router-dom';
 import useForm from '../hooks/useForm';
@@ -115,18 +116,22 @@ function Auth({ nextStep, signUp, setSignUp }) {
           >
             {authType}
           </Button>
-          <Grid container>
+          <Grid container alignItems="center" justifyContent="center">
             <Grid item>
               <Typography color={'error'} variant="subtitle2">
                 {error}
               </Typography>
             </Grid>
             <Grid item>
-              <p onClick={() => setSignUp(!signUp)} variant="body2">
+              <Typography
+                sx={{ textDecoration: 'underline', color: 'secondary.main' }}
+                onClick={() => setSignUp(!signUp)}
+                variant="body2"
+              >
                 {signUp
                   ? `Already have an account? Sign In`
                   : "Don't have an account? Sign Up"}
-              </p>
+              </Typography>
             </Grid>
           </Grid>
         </Box>

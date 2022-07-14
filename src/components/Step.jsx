@@ -11,7 +11,7 @@ function SignUpStep({ signUp, setSignUp }) {
   };
 
   return (
-    <Container>
+    <Container maxWidth="sm">
       <Stepper activeStep={activeStep}>
         <Step>
           <StepLabel>first</StepLabel>
