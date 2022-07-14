@@ -1,11 +1,16 @@
 import { useEffect, useState, createContext, useContext } from 'react';
-import { getUser } from '../services/users';
+import { getUser, signOut } from '../services/users';
 
 const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
   const defaultValue = { email: null };
   const [currentUser, setCurrentUser] = useState(defaultValue);
+
+  const logOut = async () => {
+    await signOut();
+    setCurrentUser(defaultValue);
+  };
 
   const acquireUser = async () => {
     const data = await getUser();
@@ -21,7 +26,7 @@ const UserProvider = ({ children }) => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ currentUser, acquireUser }}>
+    <UserContext.Provider value={{ currentUser, acquireUser, logOut }}>
       {children}
     </UserContext.Provider>
   );

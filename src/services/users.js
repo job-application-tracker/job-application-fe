@@ -40,3 +40,14 @@ export async function getUser() {
     return null;
   }
 }
+
+export async function signOut() {
+  try {
+    await fetch(url + '/api/v1/users/sessions', {
+      method: 'DELETE',
+      credentials: 'include',
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
