@@ -1,14 +1,15 @@
 import { Stepper, Step, StepLabel, Container } from '@mui/material';
 import React, { useState } from 'react';
 import Auth from './Auth';
+import GoalsForm from './GoalsForm';
 
-function SignUpStep({signUp, setSignUp}) {
+function SignUpStep({ signUp, setSignUp }) {
   const [activeStep, setActiveStep] = useState(0);
 
   const nextStep = () => {
     if (activeStep <= 1) setActiveStep((prevStep) => prevStep + 1);
   };
-  
+
   return (
     <Container>
       <Stepper activeStep={activeStep}>
@@ -20,7 +21,10 @@ function SignUpStep({signUp, setSignUp}) {
         </Step>
       </Stepper>
       <Container>
-        {activeStep === 0 && <Auth nextStep={nextStep} signUp={signUp} setSignUp={setSignUp}/>}
+        {activeStep === 0 && (
+          <Auth nextStep={nextStep} signUp={signUp} setSignUp={setSignUp} />
+        )}
+        {activeStep === 1 && <GoalsForm />}
       </Container>
     </Container>
   );
