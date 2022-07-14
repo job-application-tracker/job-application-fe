@@ -1,9 +1,13 @@
 import { createContext, useState, useContext, useEffect } from 'react';
 import { fetchJobs } from '../services/jobs';
+import { useUserContext } from './userContext';
 
 export const JobContext = createContext();
 
 export const JobProvider = ({ children }) => {
+  const {
+    currentUser: { email },
+  } = useUserContext();
   const [status, setStatus] = useState({
     Saved: {},
     Applied: {},
@@ -15,20 +19,25 @@ export const JobProvider = ({ children }) => {
 
   useEffect(() => {
     const getJobs = async () => {
+      //fetch job data
       const data = await fetchJobs();
+      //create a new object to fill our information with
+      const newData = {};
+      //loop over each status and fill with correct items
       for (const key in status) {
         const list = data.filter((job) => job.status === key);
-        status[key] = {
+        newData[key] = {
           id: key,
           list: list,
         };
       }
-      console.log('status', status);
+      //set status to new state
+      setStatus(newData);
     };
-    getJobs();
-  }, []);
-
-  const value = {};
+    //only getJobs if user is logged in
+    email && getJobs();
+  }, [email]);
+  const value = { status };
 
   return <JobContext.Provider value={value}> {children} </JobContext.Provider>;
 };
