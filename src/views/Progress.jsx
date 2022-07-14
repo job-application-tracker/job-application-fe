@@ -1,5 +1,10 @@
 import React from 'react';
+import Board from './Board/Board';
 
 export default function Progress() {
-  return <div>Progress</div>;
+  return (
+    <div>
+      <Board />
+    </div>
+  );
 }

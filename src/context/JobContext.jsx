@@ -16,6 +16,7 @@ export const JobProvider = ({ children }) => {
     Ghosted: {},
     Rejected: {},
   });
+  const [loadingStatus, setLoadingStatus] = useState(true);
 
   useEffect(() => {
     const getJobs = async () => {
@@ -33,11 +34,12 @@ export const JobProvider = ({ children }) => {
       }
       //set status to new state
       setStatus(newData);
+      setLoadingStatus(false);
     };
     //only getJobs if user is logged in
     email && getJobs();
   }, [email]);
-  const value = { status };
+  const value = { status, loadingStatus };
 
   return <JobContext.Provider value={value}> {children} </JobContext.Provider>;
 };
