@@ -26,7 +26,7 @@ import { userGoalsUpdate } from '../services/users';
 import { useHistory } from 'react-router-dom';
 
 export default function GoalsForm() {
-  const { currentUser, nextStep } = useUserContext();
+  const { currentUser, nextStep, acquireUser } = useUserContext();
   const { formState, handleChange } = useForm({
     appGoal: currentUser.appGoal,
     networkGoal: currentUser.networkGoal,
