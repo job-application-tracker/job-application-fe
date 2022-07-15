@@ -3,7 +3,6 @@ import { Box } from '@mui/system';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useUserContext } from '../context/userContext';
-import { signOut } from '../services/users';
 import { CustomButton } from './CustomButton';
 
 function Header() {
