@@ -64,6 +64,5 @@ export async function userGoalsUpdate(id, goals) {
     throw new Error('Please sign in to update your goals.');
   }
   const goalsData = await data.json();
-  console.log('goalsData', goalsData);
   return goalsData;
 }

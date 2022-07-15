@@ -18,7 +18,9 @@ export default function App() {
           {currentUser.email ? <Progress /> : <Redirect to="/" />}
         </Route>
         <Route exact path={'/'}>
-          {!currentUser.email ? <Landing /> : <Redirect to="/progress" />}
+          {/* {!currentUser.email ? <Landing /> : <Redirect to="/progress" />} */}
+          {/*Can implement this in the step fxn in context */}
+          <Landing />
         </Route>
       </Switch>
     </Box>
