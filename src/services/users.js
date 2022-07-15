@@ -51,3 +51,19 @@ export async function signOut() {
     console.log(error);
   }
 }
+
+export async function userGoalsUpdate(id, goals) {
+  const data = await fetch(url + `/api/v1/users/${id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    credentials: 'include',
+    mode: 'cors',
+    body: JSON.stringify(goals),
+  });
+  if (!data.ok) {
+    throw new Error('Please sign in to update your goals.');
+  }
+  const goalsData = await data.json();
+  console.log('goalsData', goalsData);
+  return goalsData;
+}
