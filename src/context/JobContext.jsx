@@ -39,7 +39,7 @@ export const JobProvider = ({ children }) => {
     //only getJobs if user is logged in
     email && getJobs();
   }, [email]);
-  const value = { status, loadingStatus };
+  const value = { status, loadingStatus, setStatus };
 
   return <JobContext.Provider value={value}> {children} </JobContext.Provider>;
 };

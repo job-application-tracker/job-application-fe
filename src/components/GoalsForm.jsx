@@ -23,7 +23,6 @@ import { useUserContext } from '../context/userContext';
 
 export default function GoalsForm() {
   const { currentUser } = useUserContext();
-  console.log('currentUser', currentUser);
   //TODO: autofill values from user table response, css, accessibility
   return (
     <Container>

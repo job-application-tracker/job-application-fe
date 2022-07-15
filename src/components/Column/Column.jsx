@@ -5,20 +5,18 @@ import Job from '../Job/Job';
 
 export default function Column({ id, list }) {
   return (
-    <Droppable droppableId={id}>
-      {(provided) => (
-        <Box>
-          <Typography variant="h4">{id}</Typography>
+    <Box>
+      <Typography variant="h4">{id}</Typography>
+      <Droppable droppableId={id}>
+        {(provided) => (
           <Stack {...provided.droppableProps} ref={provided.innerRef}>
             {list.map((job, index) => (
-              <Card key={index}>
-                <Job index={index} {...{ job }} />
-              </Card>
+              <Job key={index} index={index} {...{ job }} />
             ))}
             {provided.placeholder}
           </Stack>
-        </Box>
-      )}
-    </Droppable>
+        )}
+      </Droppable>
+    </Box>
   );
 }
