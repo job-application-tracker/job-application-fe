@@ -1,6 +1,6 @@
 import { Container } from '@mui/material';
 import React, { useState } from 'react';
-import Auth from '../components/Auth';
+import Auth from '../views/Auth/Auth';
 import Step from '../components/Step';
 
 function Landing() {
