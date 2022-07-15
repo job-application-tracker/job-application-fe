@@ -11,7 +11,7 @@ export default function Column({ id, list }) {
         {(provided) => (
           <Stack {...provided.droppableProps} ref={provided.innerRef}>
             {list.map((job, index) => (
-              <Job key={index} index={index} {...{ job }} />
+              <Job key={job.id} index={index} {...{ job }} />
             ))}
             {provided.placeholder}
           </Stack>
