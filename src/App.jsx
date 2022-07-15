@@ -7,7 +7,7 @@ import { CssBaseline } from '@mui/material';
 import { useUserContext } from './context/userContext';
 
 export default function App() {
-  const { currentUser } = useUserContext();
+  const { currentUser, activeStep } = useUserContext();
 
   return (
     <Box>
@@ -15,12 +15,20 @@ export default function App() {
       <Header />
       <Switch>
         <Route path={'/progress'}>
-          {currentUser.email ? <Progress /> : <Redirect to="/" />}
+          {currentUser.email && activeStep !== 1 ? (
+            <Progress />
+          ) : (
+            <Redirect to="/" />
+          )}
         </Route>
         <Route exact path={'/'}>
-          {/* {!currentUser.email ? <Landing /> : <Redirect to="/progress" />} */}
+          {!currentUser.email || activeStep === 1 ? (
+            <Landing />
+          ) : (
+            <Redirect to="/progress" />
+          )}
           {/*Can implement this in the step fxn in context */}
-          <Landing />
+          {/* <Landing /> */}
         </Route>
       </Switch>
     </Box>

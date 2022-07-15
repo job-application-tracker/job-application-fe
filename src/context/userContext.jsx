@@ -9,7 +9,7 @@ const UserProvider = ({ children }) => {
   const [activeStep, setActiveStep] = useState(0);
 
   const nextStep = () => {
-    if (activeStep <= 1) setActiveStep((prevStep) => prevStep + 1);
+    if (activeStep <= 2) setActiveStep((prevStep) => prevStep + 1);
   };
 
   const logOut = async () => {

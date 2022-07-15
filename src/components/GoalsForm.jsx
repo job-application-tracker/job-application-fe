@@ -26,7 +26,7 @@ import { userGoalsUpdate } from '../services/users';
 import { useHistory } from 'react-router-dom';
 
 export default function GoalsForm() {
-  const { currentUser } = useUserContext();
+  const { currentUser, nextStep } = useUserContext();
   const { formState, handleChange } = useForm({
     appGoal: currentUser.appGoal,
     networkGoal: currentUser.networkGoal,
@@ -52,6 +52,7 @@ export default function GoalsForm() {
         codeGoal: formState.codeGoal,
       };
       await userGoalsUpdate(currentUser.id, goals);
+      nextStep();
       history.push('/progress');
     } catch (error) {
       console.log(error);
