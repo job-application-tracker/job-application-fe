@@ -1,5 +1,6 @@
 import { createContext, useState, useContext, useEffect } from 'react';
 import { fetchJobs } from '../services/jobs';
+import { sortJobs } from '../utils/jobs';
 import { useUserContext } from './userContext';
 
 export const JobContext = createContext();
@@ -21,19 +22,9 @@ export const JobProvider = ({ children }) => {
   useEffect(() => {
     const getJobs = async () => {
       //fetch job data
-      const data = await fetchJobs();
-      //create a new object to fill our information with
-      const newData = {};
-      //loop over each status and fill with correct items
-      for (const key in status) {
-        const list = data.filter((job) => job.status === key);
-        newData[key] = {
-          id: key,
-          list: list,
-        };
-      }
-      //set status to new state
-      setStatus(newData);
+      const jobData = await fetchJobs();
+      const formatted = sortJobs(jobData);
+      setStatus(formatted);
       setLoadingStatus(false);
     };
     //only getJobs if user is logged in

@@ -7,9 +7,9 @@ export async function fetchJobs() {
     credentials: 'include',
     mode: 'cors',
   });
-  console.log('jobs', jobs);
   if (!jobs.ok) {
     throw new Error('Error fetching jobs');
   }
+
   return await jobs.json();
 }
