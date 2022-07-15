@@ -15,7 +15,7 @@ export async function fetchJobs() {
 }
 
 export async function updateJob({ id, status }, index) {
-  const url = `${url}/api/v1/trackers/${id}`;
+  const requestUrl = `${url}/api/v1/trackers/${id}`;
   const requestInfo = {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
@@ -23,7 +23,9 @@ export async function updateJob({ id, status }, index) {
     mode: 'cors',
     body: JSON.stringify({ index, status }),
   };
-  const updatedData = await fetch(url, requestInfo);
+  const updatedData = await fetch(requestUrl, requestInfo);
+
+  console.log('resp', updatedData);
   if (!updatedData.ok) {
     throw new Error(`Error fetching job with id: ${id}`);
   }

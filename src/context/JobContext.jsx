@@ -23,6 +23,7 @@ export const JobProvider = ({ children }) => {
     const getJobs = async () => {
       //fetch job data
       const jobData = await fetchJobs();
+      console.log(jobData);
       const formatted = sortJobs(jobData);
       setStatus(formatted);
       setLoadingStatus(false);
