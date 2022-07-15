@@ -75,6 +75,7 @@ export default function GoalsForm() {
             <Box>
               <ListItemText primary="How many applications do you plan to submit?" />
               <TextField
+                required
                 value={formState.appGoal}
                 onChange={handleChange}
                 id="appGoal"
@@ -94,6 +95,7 @@ export default function GoalsForm() {
               <ListItemText primary="How many networking chats do you plan to have?" />
 
               <TextField
+                required
                 value={formState.networkGoal}
                 onChange={handleChange}
                 id="networkGoal"
@@ -113,6 +115,7 @@ export default function GoalsForm() {
               <ListItemText primary="How many meetups do you plan to attend?" />
 
               <TextField
+                required
                 value={formState.meetupGoal}
                 onChange={handleChange}
                 id="meetupGoal"
@@ -132,6 +135,7 @@ export default function GoalsForm() {
               <ListItemText primary="How many new LinkedIn connections do you plan to make?" />
 
               <TextField
+                required
                 value={formState.linkedinGoal}
                 onChange={handleChange}
                 id="linkedinGoal"
@@ -152,6 +156,7 @@ export default function GoalsForm() {
               <ListItemText primary="How many hours do you plan to work on code?" />
 
               <TextField
+                required
                 value={formState.codeGoal}
                 onChange={handleChange}
                 id="codeGoal"
