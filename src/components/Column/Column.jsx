@@ -1,3 +1,4 @@
+import { Box, Card, Stack, Typography } from '@mui/material';
 import React from 'react';
 import { Droppable } from 'react-beautiful-dnd';
 import Job from '../Job/Job';
@@ -6,15 +7,17 @@ export default function Column({ id, list }) {
   return (
     <Droppable droppableId={id}>
       {(provided) => (
-        <div>
-          <h2>{id}</h2>
-          <div {...provided.droppableProps} ref={provided.innerRef}>
+        <Box>
+          <Typography variant="h4">{id}</Typography>
+          <Stack {...provided.droppableProps} ref={provided.innerRef}>
             {list.map((job, index) => (
-              <Job key={index} index={index} {...{ job }} />
+              <Card key={index}>
+                <Job index={index} {...{ job }} />
+              </Card>
             ))}
             {provided.placeholder}
-          </div>
-        </div>
+          </Stack>
+        </Box>
       )}
     </Droppable>
   );
