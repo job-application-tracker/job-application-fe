@@ -1,11 +1,22 @@
 import { useEffect, useState, createContext, useContext } from 'react';
-import { getUser } from '../services/users';
+import { getUser, signOut } from '../services/users';
 
 const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
   const defaultValue = { email: null };
   const [currentUser, setCurrentUser] = useState(defaultValue);
+  const [activeStep, setActiveStep] = useState(0);
+
+  const nextStep = () => {
+    if (activeStep <= 2) setActiveStep((prevStep) => prevStep + 1);
+  };
+
+  const logOut = async () => {
+    await signOut();
+    setCurrentUser(defaultValue);
+    setActiveStep(0);
+  };
 
   const acquireUser = async () => {
     const data = await getUser();
@@ -21,7 +32,9 @@ const UserProvider = ({ children }) => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ currentUser, acquireUser }}>
+    <UserContext.Provider
+      value={{ currentUser, acquireUser, logOut, activeStep, nextStep }}
+    >
       {children}
     </UserContext.Provider>
   );
