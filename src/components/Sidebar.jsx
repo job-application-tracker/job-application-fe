@@ -1,11 +1,14 @@
 import { Typography } from '@mui/material';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
+import { useUserContext } from '../context/userContext';
 import { getAchievementsByWeek } from '../services/achievements';
 import DisplayPercentComplete from './DisplayPercentComplete';
 
 function Sidebar() {
   const [achieved, setAchieved] = useState({});
+  const {currentUser} = useUserContext();
+
   useEffect(() => {
     try {
       const getData = async () => {
@@ -32,15 +35,15 @@ function Sidebar() {
   return (
     <div>
       <h3>Applications</h3>
-      <DisplayPercentComplete complete={achieved.appNum} total={5} />
+      <DisplayPercentComplete complete={achieved.appNum} total={currentUser.appGoal} />
       <h3>Networking</h3>
-      <DisplayPercentComplete complete={achieved.networkNum} total={5} />
+      <DisplayPercentComplete complete={achieved.networkNum} total={currentUser.networkGoal} />
       <h3>Meetups</h3>
-      <DisplayPercentComplete complete={achieved.meetupNum} total={5} />
+      <DisplayPercentComplete complete={achieved.meetupNum} total={currentUser.meetupGoal} />
       <h3>LinkedIn connections</h3>
-      <DisplayPercentComplete complete={achieved.linkedinNum} total={5} />
+      <DisplayPercentComplete complete={achieved.linkedinNum} total={currentUser.linkedinGoal} />
       <h3>Coding Hours</h3>
-      <DisplayPercentComplete complete={achieved.codeNum} total={5} />
+      <DisplayPercentComplete complete={achieved.codeNum} total={currentUser.codeGoal} />
     </div>
   );
 }
