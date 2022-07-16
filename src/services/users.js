@@ -50,7 +50,7 @@ export async function getCurrentGoals() {
     const userData = await user.json();
     console.log('userData', userData);
     return userData;
-  } catch (error) {
+  } catch (e) {
     console.log(e.message);
     return null;
   }
