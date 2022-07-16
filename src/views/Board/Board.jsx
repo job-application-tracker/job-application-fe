@@ -75,29 +75,38 @@ export default function Board() {
   const closedStatus = ['Accepted', 'Ghosted', 'Rejected'];
   if (loadingStatus) return <div>loader</div>;
   return (
-    <Container sx={{ flex: 1 }}>
+    <Container>
       // TODO: replace with toast notif
       {error && <p>{error}</p>}
       <DragDropContext onDragEnd={onDragEnd}>
-        <Grid container spacing={2}>
-          {Object.values(status).map(({ id, list }, i) =>
-            closedStatus.includes(id) ? (
-              <Grid
-                key={i}
-                container
-                flexDirection="row"
-                justifyContent="flex-end"
-              >
-                <Grid item xs={3}>
-                  <Column {...{ id, list }} />
-                </Grid>
+        <Grid container spacing={2} minHeight="100vh">
+          <Grid item xs={3} minHeight="100vh">
+            <Column id={'Saved'} list={status['Saved'].list} />
+          </Grid>
+          <Grid item xs={3} minHeight="100vh">
+            <Column id={'Applied'} list={status['Applied'].list} />
+          </Grid>
+          <Grid item xs={3} minHeight="100vh">
+            <Column id={'Interviewing'} list={status['Interviewing'].list} />
+          </Grid>
+          <Grid item minHeight="100vh">
+            <Grid
+              container
+              direction={'column'}
+              justifyContent="space-evenly"
+              alignItems="flex-start"
+            >
+              <Grid item xs={3}>
+                <Column id={'Accepted'} list={status['Accepted'].list} />
               </Grid>
-            ) : (
-              <Grid minHeight="100vh" key={i} item xs={3}>
-                <Column {...{ id, list }} />
+              <Grid item xs={3}>
+                <Column id={'Ghosted'} list={status['Ghosted'].list} />
               </Grid>
-            )
-          )}
+              <Grid item xs={3}>
+                <Column id={'Rejected'} list={status['Rejected'].list} />
+              </Grid>
+            </Grid>
+          </Grid>
         </Grid>
       </DragDropContext>
     </Container>
