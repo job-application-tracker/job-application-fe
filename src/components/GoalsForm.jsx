@@ -37,8 +37,6 @@ export default function GoalsForm() {
   const [error, setError] = useState('');
   const history = useHistory();
 
-  console.log('currentUser', currentUser);
-  console.log('formState.appGoal', formState.appGoal);
   //TODO: autofill values from user table response, css, accessibility
 
   const handleSubmit = async (e) => {

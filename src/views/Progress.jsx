@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useUserContext } from '../context/userContext';
+import Board from './Board/Board';
 
 export default function Progress() {
   const { getCurrentUser } = useUserContext();
@@ -11,5 +12,9 @@ export default function Progress() {
     setUpdatedUser();
   }, []);
 
-  return <div>Progress</div>;
+  return (
+    <div>
+      <Board />
+    </div>
+  );
 }

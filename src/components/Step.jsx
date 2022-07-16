@@ -1,7 +1,8 @@
 import { Stepper, Step, StepLabel, Container } from '@mui/material';
 import React, { useState } from 'react';
 import { useUserContext } from '../context/userContext';
-import Auth from './Auth';
+import Auth from '../views/Auth/Auth';
+
 import GoalsForm from './GoalsForm';
 
 function SignUpStep({ signUp, setSignUp }) {

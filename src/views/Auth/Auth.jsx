@@ -13,10 +13,10 @@ import {
   ListItemSecondaryAction,
 } from '@mui/material';
 import { useHistory } from 'react-router-dom';
-import useForm from '../hooks/useForm';
-import { signInUser, signUpUser } from '../services/users';
+import useForm from '../../hooks/useForm';
+import { signInUser, signUpUser } from '../../services/users';
 import { useState } from 'react';
-import { useUserContext } from '../context/userContext';
+import { useUserContext } from '../../context/userContext';
 
 function Auth({ nextStep, signUp, setSignUp }) {
   const [error, setError] = useState('');

@@ -5,14 +5,17 @@ import App from './App';
 import theme from './utils/theme';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { UserProvider } from './context/userContext';
+import { JobProvider } from './context/JobContext';
 
 render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <UserProvider>
-        <Router>
-          <App />
-        </Router>
+        <JobProvider>
+          <Router>
+            <App />
+          </Router>
+        </JobProvider>
       </UserProvider>
     </ThemeProvider>
   </React.StrictMode>,
