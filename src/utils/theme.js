@@ -11,6 +11,9 @@ const theme = createTheme({
       main: '#2f4550',
     },
   },
+  zIndex: {
+    tooltip: 1800,
+  },
 });
 
 export default theme;

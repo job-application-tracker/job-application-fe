@@ -34,8 +34,23 @@ export async function getUser() {
       credentials: 'include',
     });
     const userData = await user.json();
+    // console.log('userData', userData);
     return userData;
-  } catch (error) {
+  } catch (e) {
+    console.log(e.message);
+    return null;
+  }
+}
+
+export async function getCurrentGoals() {
+  try {
+    const user = await fetch(url + '/api/v1/users/currentGoals', {
+      credentials: 'include',
+    });
+    const userData = await user.json();
+    console.log('userData', userData);
+    return userData;
+  } catch (e) {
     console.log(e.message);
     return null;
   }

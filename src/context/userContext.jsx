@@ -1,5 +1,5 @@
 import { useEffect, useState, createContext, useContext } from 'react';
-import { getUser, signOut } from '../services/users';
+import { getCurrentGoals, getUser, signOut } from '../services/users';
 
 const UserContext = createContext();
 
@@ -10,6 +10,7 @@ const UserProvider = ({ children }) => {
 
   const nextStep = () => {
     if (activeStep <= 2) setActiveStep((prevStep) => prevStep + 1);
+    console.log('activeStep', activeStep);
   };
 
   const logOut = async () => {
@@ -18,9 +19,15 @@ const UserProvider = ({ children }) => {
     setActiveStep(0);
   };
 
+  const getCurrentUser = async () => {
+    const data = await getCurrentGoals();
+    setCurrentUser(data);
+  };
+
   const acquireUser = async () => {
     const data = await getUser();
     setCurrentUser(data);
+    return data;
   };
 
   useEffect(() => {
@@ -33,7 +40,14 @@ const UserProvider = ({ children }) => {
 
   return (
     <UserContext.Provider
-      value={{ currentUser, acquireUser, logOut, activeStep, nextStep }}
+      value={{
+        currentUser,
+        acquireUser,
+        logOut,
+        activeStep,
+        nextStep,
+        getCurrentUser,
+      }}
     >
       {children}
     </UserContext.Provider>
