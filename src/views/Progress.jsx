@@ -12,9 +12,5 @@ export default function Progress() {
     setUpdatedUser();
   }, []);
 
-  return (
-    <div>
-      <Board />
-    </div>
-  );
+  return <Board />;
 }

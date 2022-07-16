@@ -1,30 +1,15 @@
 import React, { useState } from 'react';
 import { useJobContext } from '../../context/JobContext';
 import Column from '../../components/Column/Column';
-import { Grid } from '@mui/material';
+import { CssBaseline, Grid } from '@mui/material';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { updateJob } from '../../services/jobs';
+import { Container } from '@mui/system';
 
 export default function Board() {
   const [error, setError] = useState('');
   const { status, loadingStatus, setStatus } = useJobContext();
-  const manageUpdate = async (job, index) => {
-    try {
-      const jobState = status[job.status].list;
-      const jobsToUpdate = jobState.slice(index);
-      await Promise.all(
-        jobsToUpdate.map((currJob, idx) => {
-          console.log('updatedindex', idx + index);
-          return currJob.id === job.id
-            ? updateJob(job, index)
-            : updateJob(currJob, idx + index);
-        })
-      );
-    } catch (error) {
-      setError(error.message);
-      console.error(error);
-    }
-  };
+
   const onDragEnd = async ({ source, destination }) => {
     if (destination === undefined || destination === null) return null;
 
@@ -45,7 +30,7 @@ export default function Board() {
           id: start.id,
           list: newList,
         };
-        await updateJob(start.list[source.index], destination.index);
+        // await updateJob(start.list[source.index], destination.index);
         setStatus((state) => ({ ...state, [newCol.id]: newCol }));
         return null;
       } else {
@@ -69,10 +54,10 @@ export default function Board() {
         };
 
         // Update the state
-        await updateJob(
-          { ...start.list[source.index], status: end.id },
-          destination.index
-        );
+        // await updateJob(
+        //   { ...start.list[source.index], status: end.id },
+        //   destination.index
+        // );
         setStatus((prev) => ({
           ...prev,
           [newStartCol.id]: newStartCol,
@@ -87,17 +72,52 @@ export default function Board() {
       return null;
     }
   };
+  const closedStatus = ['Accepted', 'Ghosted', 'Rejected'];
   if (loadingStatus) return <div>loader</div>;
   return (
-    <Grid>
-      {' '}
+    <Container sx={{ flex: 1 }}>
       // TODO: replace with toast notif
       {error && <p>{error}</p>}
       <DragDropContext onDragEnd={onDragEnd}>
-        {Object.values(status).map(({ id, list }, i) => (
-          <Column key={i} {...{ id, list }} />
-        ))}
+        <Grid container spacing={2}>
+          {Object.values(status).map(({ id, list }, i) =>
+            closedStatus.includes(id) ? (
+              <Grid
+                key={i}
+                container
+                flexDirection="row"
+                justifyContent="flex-end"
+              >
+                <Grid item xs={3}>
+                  <Column {...{ id, list }} />
+                </Grid>
+              </Grid>
+            ) : (
+              <Grid minHeight="100vh" key={i} item xs={3}>
+                <Column {...{ id, list }} />
+              </Grid>
+            )
+          )}
+        </Grid>
       </DragDropContext>
-    </Grid>
+    </Container>
   );
 }
+
+// const manageUpdate = async (job, index) => {
+//     try {
+//       const jobState = status[job.status].list;
+//       const jobsToUpdate = jobState.slice(index);
+//       await Promise.all(
+//         jobsToUpdate.map((currJob, idx) => {
+//           console.log('updatedindex', idx + index);
+//           return currJob.id === job.id
+//             ? updateJob(job, index)
+//             : updateJob(currJob, idx + index);
+//         })
+//       );
+//     } catch (error) {
+//       setError(error.message);
+//       console.error(error);
+//     }
+//   };
