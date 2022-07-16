@@ -34,7 +34,7 @@ export async function getUser() {
       credentials: 'include',
     });
     const userData = await user.json();
-    console.log('userData', userData);
+    // console.log('userData', userData);
     return userData;
   } catch (error) {
     console.log(e.message);

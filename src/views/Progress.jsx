@@ -6,7 +6,6 @@ export default function Progress() {
   useEffect(() => {
     const setUpdatedUser = async () => {
       const data = await getCurrentUser();
-      setTest(data);
     };
 
     setUpdatedUser();
