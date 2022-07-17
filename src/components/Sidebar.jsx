@@ -1,4 +1,4 @@
-import { Typography } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useUserContext } from '../context/userContext';
@@ -7,10 +7,11 @@ import DisplayPercentComplete from './DisplayPercentComplete';
 
 function Sidebar() {
   const [achieved, setAchieved] = useState({});
-  const {currentUser} = useUserContext();
+  const { currentUser } = useUserContext();
 
   useEffect(() => {
     try {
+      if (!currentUser) return;
       const getData = async () => {
         const date = new Date();
         const year = date.getFullYear();
@@ -23,28 +24,42 @@ function Sidebar() {
         const achievements = await getAchievementsByWeek(year, weekNumber);
         setAchieved(achievements);
       };
-
       getData();
     } catch (error) {
       console.log(error.message);
     }
-  }, []);
+  }, [currentUser]);
 
   console.log('achieved', achieved);
 
   return (
-    <div>
-      <h3>Applications</h3>
-      <DisplayPercentComplete complete={achieved.appNum} total={currentUser.appGoal} />
-      <h3>Networking</h3>
-      <DisplayPercentComplete complete={achieved.networkNum} total={currentUser.networkGoal} />
-      <h3>Meetups</h3>
-      <DisplayPercentComplete complete={achieved.meetupNum} total={currentUser.meetupGoal} />
-      <h3>LinkedIn connections</h3>
-      <DisplayPercentComplete complete={achieved.linkedinNum} total={currentUser.linkedinGoal} />
-      <h3>Coding Hours</h3>
-      <DisplayPercentComplete complete={achieved.codeNum} total={currentUser.codeGoal} />
-    </div>
+    <Container maxWidth="xs">
+      <Typography component="h3">Applications</Typography>
+      <DisplayPercentComplete
+        complete={achieved.appNum}
+        total={currentUser.appGoal}
+      />
+      <Typography component="h3">Networking</Typography>
+      <DisplayPercentComplete
+        complete={achieved.networkNum}
+        total={currentUser.networkGoal}
+      />
+      <Typography component="h3">Meetups</Typography>
+      <DisplayPercentComplete
+        complete={achieved.meetupNum}
+        total={currentUser.meetupGoal}
+      />
+      <Typography component="h3">LinkedIn connections</Typography>
+      <DisplayPercentComplete
+        complete={achieved.linkedinNum}
+        total={currentUser.linkedinGoal}
+      />
+      <Typography component="h3">Coding Hours</Typography>
+      <DisplayPercentComplete
+        complete={achieved.codeNum}
+        total={currentUser.codeGoal}
+      />
+    </Container>
   );
 }
 
