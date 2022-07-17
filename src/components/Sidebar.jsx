@@ -1,3 +1,4 @@
+import { Box, Typography } from '@mui/material';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useUserContext } from '../context/userContext';
@@ -6,7 +7,7 @@ import DisplayPercentComplete from './DisplayPercentComplete';
 
 function Sidebar() {
   const [achieved, setAchieved] = useState({});
-  const {currentUser} = useUserContext();
+  const { currentUser } = useUserContext();
 
   useEffect(() => {
     try {
@@ -32,18 +33,42 @@ function Sidebar() {
   console.log('achieved', achieved);
 
   return (
-    <div>
-      <h3>Applications</h3>
-      <DisplayPercentComplete complete={achieved.appNum} total={currentUser.appGoal} />
-      <h3>Networking</h3>
-      <DisplayPercentComplete complete={achieved.networkNum} total={currentUser.networkGoal} />
-      <h3>Meetups</h3>
-      <DisplayPercentComplete complete={achieved.meetupNum} total={currentUser.meetupGoal} />
-      <h3>LinkedIn connections</h3>
-      <DisplayPercentComplete complete={achieved.linkedinNum} total={currentUser.linkedinGoal} />
-      <h3>Coding Hours</h3>
-      <DisplayPercentComplete complete={achieved.codeNum} total={currentUser.codeGoal} />
-    </div>
+    <Box
+      sx={{
+        bgcolor: 'background.paper',
+        boxShadow: 1,
+        borderRadius: 2,
+        p: 2,
+        maxWidth: 300,
+      }}
+    >
+      <Typography variant="h5">Applications</Typography>
+      <DisplayPercentComplete
+        complete={achieved.appNum}
+        total={currentUser.appGoal}
+      />
+      <Typography variant="h5">Networking</Typography>
+      <DisplayPercentComplete
+        complete={achieved.networkNum}
+        total={currentUser.networkGoal}
+      />
+      <Typography variant="h5">Meetups</Typography>
+      <DisplayPercentComplete
+        complete={achieved.meetupNum}
+        total={currentUser.meetupGoal}
+        variant="h5"
+      />
+      <Typography variant="h5">LinkedIn connections</Typography>
+      <DisplayPercentComplete
+        complete={achieved.linkedinNum}
+        total={currentUser.linkedinGoal}
+      />
+      <Typography variant="h5">Coding Hours</Typography>
+      <DisplayPercentComplete
+        complete={achieved.codeNum}
+        total={currentUser.codeGoal}
+      />
+    </Box>
   );
 }
 

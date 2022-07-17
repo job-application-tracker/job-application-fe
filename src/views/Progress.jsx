@@ -1,3 +1,4 @@
+import { Container, Grid } from '@mui/material';
 import React, { useEffect } from 'react';
 import Sidebar from '../components/Sidebar';
 import { useUserContext } from '../context/userContext';
@@ -14,9 +15,15 @@ export default function Progress() {
   }, []);
 
   return (
-    <>
-      <Sidebar />
-      <Board />
-    </>
+    <Container>
+      <Grid container spacing={2}>
+        <Grid item xs={3}>
+          <Sidebar />
+        </Grid>
+        <Grid item xs={9}>
+          <Board />
+        </Grid>
+      </Grid>
+    </Container>
   );
 }

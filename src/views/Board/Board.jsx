@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useJobContext } from '../../context/JobContext';
 import Column from '../../components/Column/Column';
-import { CssBaseline, Grid } from '@mui/material';
+import { Box, CssBaseline, Grid } from '@mui/material';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { updateJob } from '../../services/jobs';
 import { Container } from '@mui/system';
@@ -81,29 +81,88 @@ export default function Board() {
       <DragDropContext onDragEnd={onDragEnd}>
         <Grid container spacing={2} minHeight="100vh">
           <Grid item xs={3} minHeight="100vh">
-            <Column id={'Saved'} list={status['Saved'].list} />
+            <Box
+              sx={{
+                minHeight: '100vh',
+                bgcolor: 'background.paper',
+                boxShadow: 1,
+                borderRadius: 2,
+                p: 2,
+              }}
+            >
+              <Column id={'Saved'} list={status['Saved'].list} />
+            </Box>
           </Grid>
           <Grid item xs={3} minHeight="100vh">
-            <Column id={'Applied'} list={status['Applied'].list} />
+            <Box
+              sx={{
+                minHeight: '100vh',
+                bgcolor: 'background.paper',
+                boxShadow: 1,
+                borderRadius: 2,
+                p: 2,
+              }}
+            >
+              <Column id={'Applied'} list={status['Applied'].list} />
+            </Box>
           </Grid>
           <Grid item xs={3} minHeight="100vh">
-            <Column id={'Interviewing'} list={status['Interviewing'].list} />
+            <Box
+              sx={{
+                minHeight: '100vh',
+                bgcolor: 'background.paper',
+                boxShadow: 1,
+                borderRadius: 2,
+                p: 2,
+              }}
+            >
+              <Column id={'Interviewing'} list={status['Interviewing'].list} />
+            </Box>
           </Grid>
           <Grid item minHeight="100vh">
             <Grid
+              minHeight="100vh"
               container
               direction={'column'}
-              justifyContent="space-evenly"
+              justifyContent="space-around"
               alignItems="flex-start"
+              spacing={5}
             >
-              <Grid item xs={3}>
-                <Column id={'Accepted'} list={status['Accepted'].list} />
+              <Grid item xs={4}>
+                <Box
+                  sx={{
+                    bgcolor: 'background.paper',
+                    boxShadow: 1,
+                    borderRadius: 2,
+                    p: 2,
+                  }}
+                >
+                  <Column id={'Accepted'} list={status['Accepted'].list} />
+                </Box>
               </Grid>
-              <Grid item xs={3}>
-                <Column id={'Ghosted'} list={status['Ghosted'].list} />
+              <Grid item xs={4}>
+                <Box
+                  sx={{
+                    bgcolor: 'background.paper',
+                    boxShadow: 1,
+                    borderRadius: 2,
+                    p: 2,
+                  }}
+                >
+                  <Column id={'Ghosted'} list={status['Ghosted'].list} />
+                </Box>
               </Grid>
-              <Grid item xs={3}>
-                <Column id={'Rejected'} list={status['Rejected'].list} />
+              <Grid item xs={4}>
+                <Box
+                  sx={{
+                    bgcolor: 'background.paper',
+                    boxShadow: 1,
+                    borderRadius: 2,
+                    p: 2,
+                  }}
+                >
+                  <Column id={'Rejected'} list={status['Rejected'].list} />
+                </Box>
               </Grid>
             </Grid>
           </Grid>
