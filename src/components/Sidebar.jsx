@@ -39,7 +39,7 @@ function Sidebar() {
         boxShadow: 1,
         borderRadius: 2,
         p: 2,
-        maxWidth: 300,
+        maxWidth: '100%',
       }}
     >
       <Typography variant="h5">Applications</Typography>

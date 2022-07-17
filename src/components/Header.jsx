@@ -3,7 +3,7 @@ import { Box } from '@mui/system';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useUserContext } from '../context/userContext';
-import { CustomButton } from './CustomButton';
+import { CustomButton } from './styled/CustomButton';
 
 function Header() {
   const history = useHistory();

@@ -72,15 +72,24 @@ export default function Board() {
       return null;
     }
   };
-  const closedStatus = ['Accepted', 'Ghosted', 'Rejected'];
+
   if (loadingStatus) return <div>loader</div>;
   return (
     <>
       {/* TODO: replace with toast notif */}
       {error && <p>{error}</p>}
       <DragDropContext onDragEnd={onDragEnd}>
-        <Grid container spacing={2} minHeight="100vh">
+        <Grid
+          container
+          spacing={2}
+          minHeight="100vh"
+          sx={{
+            alignItems: 'stretch',
+            justifyContent: 'space-evenly',
+          }}
+        >
           <Grid item xs={3} minHeight="100vh">
+            <Typography variant="h4">Saved</Typography>
             <Box
               sx={{
                 overflowY: 'auto',
@@ -91,12 +100,11 @@ export default function Board() {
                 p: 2,
               }}
             >
-              <Typography variant="h4">Saved</Typography>
-
               <Column id={'Saved'} list={status['Saved'].list} />
             </Box>
           </Grid>
           <Grid item xs={3} minHeight="100vh">
+            <Typography variant="h4">Applied</Typography>
             <Box
               sx={{
                 overflowY: 'auto',
@@ -107,12 +115,11 @@ export default function Board() {
                 p: 2,
               }}
             >
-              <Typography variant="h4">Applied</Typography>
-
               <Column id={'Applied'} list={status['Applied'].list} />
             </Box>
           </Grid>
           <Grid item xs={3} minHeight="100vh">
+            <Typography variant="h4">Interviewing</Typography>
             <Box
               sx={{
                 minHeight: '100vh',
@@ -123,11 +130,10 @@ export default function Board() {
                 p: 2,
               }}
             >
-              <Typography variant="h4">Interviewing</Typography>
-
               <Column id={'Interviewing'} list={status['Interviewing'].list} />
             </Box>
           </Grid>
+          {/* nested grid starts here */}
           <Grid item minHeight="100vh">
             <Grid
               minHeight="100vh"

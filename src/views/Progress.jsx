@@ -16,10 +16,10 @@ export default function Progress() {
 
   return (
     <Grid container spacing={2}>
-      <Grid item xs={3}>
+      <Grid item xs={2}>
         <Sidebar />
       </Grid>
-      <Grid item xs={9}>
+      <Grid item xs={10} sx={{ margin: 0 }}>
         <Board />
       </Grid>
     </Grid>
