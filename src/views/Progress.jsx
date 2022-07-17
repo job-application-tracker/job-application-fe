@@ -15,15 +15,13 @@ export default function Progress() {
   }, []);
 
   return (
-    <Container>
-      <Grid container spacing={2}>
-        <Grid item xs={3}>
-          <Sidebar />
-        </Grid>
-        <Grid item xs={9}>
-          <Board />
-        </Grid>
+    <Grid container spacing={2}>
+      <Grid item xs={3}>
+        <Sidebar />
       </Grid>
-    </Container>
+      <Grid item xs={9}>
+        <Board />
+      </Grid>
+    </Grid>
   );
 }

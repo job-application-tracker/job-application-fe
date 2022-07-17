@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useJobContext } from '../../context/JobContext';
 import Column from '../../components/Column/Column';
-import { Box, CssBaseline, Grid } from '@mui/material';
+import { Box, CssBaseline, Grid, Typography } from '@mui/material';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { updateJob } from '../../services/jobs';
 import { Container } from '@mui/system';
@@ -75,14 +75,15 @@ export default function Board() {
   const closedStatus = ['Accepted', 'Ghosted', 'Rejected'];
   if (loadingStatus) return <div>loader</div>;
   return (
-    <Container>
-      // TODO: replace with toast notif
+    <>
+      {/* TODO: replace with toast notif */}
       {error && <p>{error}</p>}
       <DragDropContext onDragEnd={onDragEnd}>
         <Grid container spacing={2} minHeight="100vh">
           <Grid item xs={3} minHeight="100vh">
             <Box
               sx={{
+                overflowY: 'auto',
                 minHeight: '100vh',
                 bgcolor: 'background.paper',
                 boxShadow: 1,
@@ -90,12 +91,15 @@ export default function Board() {
                 p: 2,
               }}
             >
+              <Typography variant="h4">Saved</Typography>
+
               <Column id={'Saved'} list={status['Saved'].list} />
             </Box>
           </Grid>
           <Grid item xs={3} minHeight="100vh">
             <Box
               sx={{
+                overflowY: 'auto',
                 minHeight: '100vh',
                 bgcolor: 'background.paper',
                 boxShadow: 1,
@@ -103,6 +107,8 @@ export default function Board() {
                 p: 2,
               }}
             >
+              <Typography variant="h4">Applied</Typography>
+
               <Column id={'Applied'} list={status['Applied'].list} />
             </Box>
           </Grid>
@@ -110,12 +116,15 @@ export default function Board() {
             <Box
               sx={{
                 minHeight: '100vh',
+                overflowY: 'auto',
                 bgcolor: 'background.paper',
                 boxShadow: 1,
                 borderRadius: 2,
                 p: 2,
               }}
             >
+              <Typography variant="h4">Interviewing</Typography>
+
               <Column id={'Interviewing'} list={status['Interviewing'].list} />
             </Box>
           </Grid>
@@ -129,8 +138,11 @@ export default function Board() {
               spacing={5}
             >
               <Grid item xs={4}>
+                <Typography variant="h4">Accepted</Typography>
                 <Box
                   sx={{
+                    height: '33.33%',
+                    overflowY: 'auto',
                     bgcolor: 'background.paper',
                     boxShadow: 1,
                     borderRadius: 2,
@@ -141,8 +153,11 @@ export default function Board() {
                 </Box>
               </Grid>
               <Grid item xs={4}>
+                <Typography variant="h4">Ghosted</Typography>
                 <Box
                   sx={{
+                    maxHeight: '33.33%',
+                    overflowY: 'auto',
                     bgcolor: 'background.paper',
                     boxShadow: 1,
                     borderRadius: 2,
@@ -153,8 +168,11 @@ export default function Board() {
                 </Box>
               </Grid>
               <Grid item xs={4}>
+                <Typography variant="h4">Rejected</Typography>
                 <Box
                   sx={{
+                    height: '33.33%',
+                    overflowY: 'auto',
                     bgcolor: 'background.paper',
                     boxShadow: 1,
                     borderRadius: 2,
@@ -168,7 +186,7 @@ export default function Board() {
           </Grid>
         </Grid>
       </DragDropContext>
-    </Container>
+    </>
   );
 }
 

@@ -1,5 +1,5 @@
-import { Stepper, Step, StepLabel, Container } from '@mui/material';
-import React, { useState } from 'react';
+import { Stepper, Step, Container } from '@mui/material';
+import React from 'react';
 import { useUserContext } from '../context/userContext';
 import Auth from '../views/Auth/Auth';
 

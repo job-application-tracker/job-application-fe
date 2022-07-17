@@ -7,7 +7,6 @@ import styles from './column.css';
 export default function Column({ id, list }) {
   return (
     <Box>
-      <Typography variant="h4">{id}</Typography>
       <Droppable droppableId={id}>
         {(provided) => (
           <Stack
