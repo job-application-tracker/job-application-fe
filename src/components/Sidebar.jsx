@@ -2,25 +2,28 @@ import { Button, ButtonGroup, Container, Typography } from '@mui/material';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useUserContext } from '../context/userContext';
-import { getAchievementsByWeek } from '../services/achievements';
+import {
+  getAchievementsByWeek,
+  updateAchievements,
+} from '../services/achievements';
 import DisplayPercentComplete from './DisplayPercentComplete';
 
 function Sidebar() {
   const { currentUser } = useUserContext();
   const [achieved, setAchieved] = useState({});
 
+  //calculating the current week
+  const date = new Date();
+  const year = date.getFullYear();
+  const currentDate = new Date();
+  const startDate = new Date(currentDate.getFullYear(), 0, 1);
+  const days = Math.floor((currentDate - startDate) / (24 * 60 * 60 * 1000));
+  const weekNumber = Math.ceil(days / 7);
+
   useEffect(() => {
     try {
       if (!currentUser) return;
       const getData = async () => {
-        const date = new Date();
-        const year = date.getFullYear();
-        const currentDate = new Date();
-        const startDate = new Date(currentDate.getFullYear(), 0, 1);
-        const days = Math.floor(
-          (currentDate - startDate) / (24 * 60 * 60 * 1000)
-        );
-        const weekNumber = Math.ceil(days / 7);
         const achievements = await getAchievementsByWeek(year, weekNumber);
         setAchieved(achievements);
       };
@@ -33,12 +36,16 @@ function Sidebar() {
   console.log('achieved', achieved);
 
   const handleButtonClick = async (achType, value) => {
-    if (value < 0 && achieved[achType] === 0) return;
-    const update = achieved[achType] + value;
-    const newObj = { ...achieved };
-    newObj[achType] = update;
-    // call backend
-    setAchieved(newObj);
+    try {
+      if (value < 0 && achieved[achType] === 0) return;
+      const update = achieved[achType] + value;
+      const newObj = { ...achieved };
+      newObj[achType] = update;
+      updateAchievements(year, weekNumber, newObj);
+      setAchieved(newObj);
+    } catch (e) {
+      console.log(e.message);
+    }
   };
 
   return (
