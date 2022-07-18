@@ -58,11 +58,15 @@ function Sidebar() {
         borderRadius: 2,
         p: 2,
         maxWidth: '100%',
+        textAlign: 'center',
       }}
     >
       <Typography variant="h5">Applications</Typography>
       <ProgressBar
         completed={calculatePercent(achieved.appNum, currentUser.appGoal)}
+        bgColor="#586F7C"
+        labelAlignment="left"
+        labelColor="#000000"
       />
       <ButtonGroup variant="contained">
         <Button onClick={() => handleButtonClick('appNum', -1)}>-</Button>
@@ -74,6 +78,7 @@ function Sidebar() {
           achieved.networkNum,
           currentUser.networkGoal
         )}
+        labelAlignment="left"
       />
       <ButtonGroup variant="contained">
         <Button onClick={() => handleButtonClick('networkNum', -1)}>-</Button>
@@ -82,6 +87,7 @@ function Sidebar() {
       <Typography variant="h5">Meetups</Typography>
       <ProgressBar
         completed={calculatePercent(achieved.meetupNum, currentUser.meetupGoal)}
+        labelAlignment="left"
       />
       <ButtonGroup variant="contained">
         <Button onClick={() => handleButtonClick('meetupNum', -1)}>-</Button>
@@ -93,6 +99,7 @@ function Sidebar() {
           achieved.linkedinNum,
           currentUser.linkedinGoal
         )}
+        labelAlignment="left"
       />
       <ButtonGroup variant="contained">
         <Button onClick={() => handleButtonClick('linkedinNum', -1)}>-</Button>
@@ -101,6 +108,7 @@ function Sidebar() {
       <Typography variant="h5">Coding Hours</Typography>
       <ProgressBar
         completed={calculatePercent(achieved.codeNum, currentUser.codeGoal)}
+        labelAlignment="left"
       />
       <ButtonGroup variant="contained">
         <Button onClick={() => handleButtonClick('codeNum', -1)}>-</Button>
