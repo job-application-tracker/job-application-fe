@@ -21,19 +21,15 @@ export default function Progress() {
 
   return (
     <>
-      <CustomButton
-        variant="contained"
-        onClick={() => setOpen(true)}
-        handleClose={handleClose}
-      >
+      <CustomButton variant="contained" onClick={() => setOpen(true)}>
         Open
       </CustomButton>
       <ModalForm open={open} handleClose={handleClose} />
       <Grid container spacing={2}>
-        <Grid item xs={2}>
+        <Grid item md={2}>
           <Sidebar />
         </Grid>
-        <Grid item xs={10} sx={{ margin: 0 }}>
+        <Grid item md={10} sx={{ margin: 0 }}>
           <Board />
         </Grid>
       </Grid>

@@ -102,7 +102,7 @@ export default function ModalForm({
               flexDirection: 'column',
             }}
           >
-            <Grid xs={9} item>
+            <Grid md={9} item>
               <Select
                 sx={{ width: '100%', heigh: '45px' }}
                 id="status"
@@ -120,7 +120,7 @@ export default function ModalForm({
                 <MenuItem value="Rejected">Rejected</MenuItem>
               </Select>
             </Grid>
-            <Grid xs="auto" item>
+            <Grid md="auto" item>
               <CustomButton sx={{ height: '45px' }} variant="contained">
                 Save
               </CustomButton>
