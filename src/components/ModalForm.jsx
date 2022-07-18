@@ -36,7 +36,6 @@ export default function ModalForm({
   crudAction,
   stateAction,
   initialState,
-  id,
 }) {
   const { handleChange, formState } = useForm(initialState);
   const [error, setError] = useState('');
@@ -45,7 +44,7 @@ export default function ModalForm({
     e.preventDefault();
     try {
       setError('');
-      const data = await crudAction(formState, id);
+      const data = await crudAction(formState);
       stateAction(data);
     } catch (error) {
       setError(error.message);
