@@ -19,12 +19,24 @@ export default function Progress() {
     setUpdatedUser();
   }, []);
 
+  const jobInfo = {
+    position: '',
+    company: '',
+    description: '',
+    notes: '',
+    status: 'Saved',
+  };
   return (
     <>
       <CustomButton variant="contained" onClick={() => setOpen(true)}>
         Open
       </CustomButton>
-      <ModalForm open={open} handleClose={handleClose} />
+      <ModalForm
+        open={open}
+        handleClose={handleClose}
+        crudAction={() => {}}
+        initialState={jobInfo}
+      />
       <Grid container spacing={2}>
         <Grid item md={2}>
           <Sidebar />

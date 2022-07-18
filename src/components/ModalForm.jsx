@@ -54,7 +54,7 @@ export default function ModalForm({
     }
   };
   return (
-    <StyledModal open={open} onClose={handleClose}>
+    <StyledModal open={true} onClose={handleClose}>
       <Box
         padding="50px"
         width={600}
