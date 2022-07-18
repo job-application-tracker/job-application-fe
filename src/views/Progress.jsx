@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import Sidebar from '../components/Sidebar';
 import { useUserContext } from '../context/userContext';
 
 export default function Progress() {
@@ -11,5 +12,9 @@ export default function Progress() {
     setUpdatedUser();
   }, []);
 
-  return <div>Progress</div>;
+  return (
+    <div>
+      <Sidebar />
+    </div>
+  );
 }
