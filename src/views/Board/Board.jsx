@@ -68,7 +68,6 @@ export default function Board() {
       }
     } catch (error) {
       setError(error.message);
-      console.error(error);
       return null;
     }
   };

@@ -25,7 +25,6 @@ export async function updateJob({ id, status }, index) {
   };
   const updatedData = await fetch(requestUrl, requestInfo);
 
-  console.log('resp', updatedData);
   if (!updatedData.ok) {
     throw new Error(`Error fetching job with id: ${id}`);
   }
