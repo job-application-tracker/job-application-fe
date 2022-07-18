@@ -134,7 +134,7 @@ export default function Board() {
             </Box>
           </Grid>
           {/* nested grid starts here */}
-          <Grid item minHeight="100vh">
+          <Grid item xs={3}>
             <Grid
               minHeight="100vh"
               container
