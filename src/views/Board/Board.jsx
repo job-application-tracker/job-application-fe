@@ -88,7 +88,7 @@ export default function Board() {
             justifyContent: 'space-evenly',
           }}
         >
-          <Grid item xs={3} minHeight="100vh">
+          <Grid item md={3} minHeight="100vh">
             <Typography variant="h4">Saved</Typography>
             <Box
               sx={{
@@ -103,7 +103,7 @@ export default function Board() {
               <Column id={'Saved'} list={status['Saved'].list} />
             </Box>
           </Grid>
-          <Grid item xs={3} minHeight="100vh">
+          <Grid item md={3} minHeight="100vh">
             <Typography variant="h4">Applied</Typography>
             <Box
               sx={{
@@ -118,7 +118,7 @@ export default function Board() {
               <Column id={'Applied'} list={status['Applied'].list} />
             </Box>
           </Grid>
-          <Grid item xs={3} minHeight="100vh">
+          <Grid item md={3} minHeight="100vh">
             <Typography variant="h4">Interviewing</Typography>
             <Box
               sx={{
@@ -134,16 +134,17 @@ export default function Board() {
             </Box>
           </Grid>
           {/* nested grid starts here */}
-          <Grid item xs={3}>
+          <Grid item md={3}>
             <Grid
               minHeight="100vh"
               container
               direction={'column'}
               justifyContent="space-around"
-              alignItems="flex-start"
+              alignItems="stretch"
               spacing={5}
+              sx={{ marginRight: '10px' }}
             >
-              <Grid item xs={4}>
+              <Grid item md={4}>
                 <Typography variant="h4">Accepted</Typography>
                 <Box
                   sx={{
@@ -158,7 +159,7 @@ export default function Board() {
                   <Column id={'Accepted'} list={status['Accepted'].list} />
                 </Box>
               </Grid>
-              <Grid item xs={4}>
+              <Grid item md={4}>
                 <Typography variant="h4">Ghosted</Typography>
                 <Box
                   sx={{
@@ -173,7 +174,7 @@ export default function Board() {
                   <Column id={'Ghosted'} list={status['Ghosted'].list} />
                 </Box>
               </Grid>
-              <Grid item xs={4}>
+              <Grid item md={4}>
                 <Typography variant="h4">Rejected</Typography>
                 <Box
                   sx={{
