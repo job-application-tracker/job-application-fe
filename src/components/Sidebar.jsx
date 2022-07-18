@@ -1,4 +1,5 @@
 import { Button, ButtonGroup, Container, Typography, Box } from '@mui/material';
+import ProgressBar from '@ramonak/react-progress-bar';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useUserContext } from '../context/userContext';
@@ -6,7 +7,7 @@ import {
   getAchievementsByWeek,
   updateAchievements,
 } from '../services/achievements';
-import DisplayPercentComplete from './DisplayPercentComplete';
+import { calculatePercent } from '../utils/percent';
 
 function Sidebar() {
   const { currentUser } = useUserContext();
@@ -57,48 +58,72 @@ function Sidebar() {
         borderRadius: 2,
         p: 2,
         maxWidth: '100%',
+        textAlign: 'center',
       }}
     >
       <Typography variant="h5">Applications</Typography>
-      <DisplayPercentComplete
-        complete={achieved.appNum}
-        total={currentUser.appGoal}
+      <Typography variant="p">
+        {achieved.appNum}/{currentUser.appGoal}
+      </Typography>
+      <ProgressBar
+        completed={calculatePercent(achieved.appNum, currentUser.appGoal)}
+        bgColor="#586F7C"
+        labelAlignment="left"
+        labelColor="#000000"
       />
       <ButtonGroup variant="contained">
         <Button onClick={() => handleButtonClick('appNum', -1)}>-</Button>
         <Button onClick={() => handleButtonClick('appNum', 1)}>+</Button>
       </ButtonGroup>
       <Typography variant="h5">Networking</Typography>
-      <DisplayPercentComplete
-        complete={achieved.networkNum}
-        total={currentUser.networkGoal}
+      <Typography variant="p">
+        {achieved.networkNum}/{currentUser.networkGoal}
+      </Typography>
+      <ProgressBar
+        completed={calculatePercent(
+          achieved.networkNum,
+          currentUser.networkGoal
+        )}
+        labelAlignment="left"
       />
       <ButtonGroup variant="contained">
         <Button onClick={() => handleButtonClick('networkNum', -1)}>-</Button>
         <Button onClick={() => handleButtonClick('networkNum', 1)}>+</Button>
       </ButtonGroup>
       <Typography variant="h5">Meetups</Typography>
-      <DisplayPercentComplete
-        complete={achieved.meetupNum}
-        total={currentUser.meetupGoal}
+      <Typography variant="p">
+        {achieved.meetupNum}/{currentUser.meetupGoal}
+      </Typography>
+      <ProgressBar
+        completed={calculatePercent(achieved.meetupNum, currentUser.meetupGoal)}
+        labelAlignment="left"
       />
       <ButtonGroup variant="contained">
         <Button onClick={() => handleButtonClick('meetupNum', -1)}>-</Button>
         <Button onClick={() => handleButtonClick('meetupNum', 1)}>+</Button>
       </ButtonGroup>
       <Typography variant="h5">LinkedIn connections</Typography>
-      <DisplayPercentComplete
-        complete={achieved.linkedinNum}
-        total={currentUser.linkedinGoal}
+      <Typography variant="p">
+        {achieved.linkedinNum}/{currentUser.linkedinGoal}
+      </Typography>
+      <ProgressBar
+        completed={calculatePercent(
+          achieved.linkedinNum,
+          currentUser.linkedinGoal
+        )}
+        labelAlignment="left"
       />
       <ButtonGroup variant="contained">
         <Button onClick={() => handleButtonClick('linkedinNum', -1)}>-</Button>
         <Button onClick={() => handleButtonClick('linkedinNum', 1)}>+</Button>
       </ButtonGroup>
       <Typography variant="h5">Coding Hours</Typography>
-      <DisplayPercentComplete
-        complete={achieved.codeNum}
-        total={currentUser.codeGoal}
+      <Typography variant="p">
+        {achieved.codeNum}/{currentUser.codeGoal}
+      </Typography>
+      <ProgressBar
+        completed={calculatePercent(achieved.codeNum, currentUser.codeGoal)}
+        labelAlignment="left"
       />
       <ButtonGroup variant="contained">
         <Button onClick={() => handleButtonClick('codeNum', -1)}>-</Button>
