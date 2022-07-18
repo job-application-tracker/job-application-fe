@@ -7,6 +7,7 @@ const UserProvider = ({ children }) => {
   const defaultValue = { email: null };
   const [currentUser, setCurrentUser] = useState(defaultValue);
   const [activeStep, setActiveStep] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   const nextStep = () => {
     if (activeStep <= 2) setActiveStep((prevStep) => prevStep + 1);
@@ -27,6 +28,7 @@ const UserProvider = ({ children }) => {
   const acquireUser = async () => {
     const data = await getUser();
     setCurrentUser(data);
+    setLoading(false);
     return data;
   };
 
@@ -47,6 +49,7 @@ const UserProvider = ({ children }) => {
         activeStep,
         nextStep,
         getCurrentUser,
+        loading
       }}
     >
       {children}
