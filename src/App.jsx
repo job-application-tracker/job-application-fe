@@ -5,6 +5,7 @@ import Header from './components/Header';
 import { Box } from '@mui/system';
 import { CssBaseline } from '@mui/material';
 import { useUserContext } from './context/userContext';
+import PrivateRoute from './components/PrivateRoute';
 
 export default function App() {
   const { currentUser, activeStep } = useUserContext();
@@ -14,13 +15,9 @@ export default function App() {
       <CssBaseline />
       <Header />
       <Switch>
-        <Route path={'/progress'}>
-          {currentUser.email && activeStep !== 1 ? (
-            <Progress />
-          ) : (
-            <Redirect to="/" />
-          )}
-        </Route>
+        <PrivateRoute path={'/progress'}>
+          <Progress />
+        </PrivateRoute>
         <Route exact path={'/'}>
           {!currentUser.email || activeStep === 1 ? (
             <Landing />

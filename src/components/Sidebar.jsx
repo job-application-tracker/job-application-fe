@@ -22,16 +22,17 @@ function Sidebar() {
 
   useEffect(() => {
     try {
-      if (!currentUser) return;
-      const getData = async () => {
-        const achievements = await getAchievementsByWeek(year, weekNumber);
-        setAchieved(achievements);
-      };
-      getData();
+      if (currentUser.email !== null) {
+        const getData = async () => {
+          const achievements = await getAchievementsByWeek(year, weekNumber);
+          setAchieved(achievements);
+        };
+        getData();
+      }
     } catch (error) {
       console.log(error.message);
     }
-  }, [currentUser]);
+  }, []);
 
   console.log('achieved', achieved);
 
