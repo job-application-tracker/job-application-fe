@@ -4,7 +4,7 @@ export default function useForm(inputs = {}) {
   const [formState, setFormState] = useState({ ...inputs });
   const handleChange = (event) => {
     const { name, value } = event.target;
-
+    console.log(formState);
     setFormState((prevState) => {
       return {
         ...prevState,

@@ -6,9 +6,11 @@ import Sidebar from '../components/Sidebar';
 import { useUserContext } from '../context/userContext';
 import Board from './Board/Board';
 import { CustomButton } from '../components/styled/CustomButton';
+import { useJobContext } from '../context/JobContext';
 
 export default function Progress() {
   const { getCurrentUser } = useUserContext();
+  const { setStatus } = useJobContext();
   const [open, setOpen] = useState(false);
   const handleClose = () => setOpen(false);
   useEffect(() => {
@@ -26,6 +28,15 @@ export default function Progress() {
     notes: '',
     status: 'Saved',
   };
+
+  const updateStateFromModal = (newJob) => {
+    setStatus((prev) => {
+      const newState = { ...prev };
+      const { status } = newJob;
+      newState[status].list = [...prev[status].list, newJob];
+      return newState;
+    });
+  };
   return (
     <>
       <CustomButton variant="contained" onClick={() => setOpen(true)}>
@@ -35,6 +46,7 @@ export default function Progress() {
         open={open}
         handleClose={handleClose}
         crudAction={() => {}}
+        stateAction={updateStateFromModal}
         initialState={jobInfo}
       />
       <Grid container spacing={2}>
