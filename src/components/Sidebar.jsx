@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import { Box, Typography } from '@mui/material';
-=======
-import { Button, ButtonGroup, Container, Typography } from '@mui/material';
->>>>>>> c55b157aaef63a8e861e62b0d08b4482e379cc8a
+import { Button, ButtonGroup, Container, Typography, Box } from '@mui/material';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useUserContext } from '../context/userContext';
@@ -15,9 +11,6 @@ import DisplayPercentComplete from './DisplayPercentComplete';
 function Sidebar() {
   const { currentUser } = useUserContext();
   const [achieved, setAchieved] = useState({});
-<<<<<<< HEAD
-  const { currentUser } = useUserContext();
-=======
 
   //calculating the current week
   const date = new Date();
@@ -26,7 +19,6 @@ function Sidebar() {
   const startDate = new Date(currentDate.getFullYear(), 0, 1);
   const days = Math.floor((currentDate - startDate) / (24 * 60 * 60 * 1000));
   const weekNumber = Math.ceil(days / 7);
->>>>>>> c55b157aaef63a8e861e62b0d08b4482e379cc8a
 
   useEffect(() => {
     try {
@@ -58,7 +50,6 @@ function Sidebar() {
   };
 
   return (
-<<<<<<< HEAD
     <Box
       sx={{
         bgcolor: 'background.paper',
@@ -69,41 +60,24 @@ function Sidebar() {
       }}
     >
       <Typography variant="h5">Applications</Typography>
-=======
-    <Container maxWidth="xs">
-      <Typography component="h3">Applications</Typography>
->>>>>>> c55b157aaef63a8e861e62b0d08b4482e379cc8a
       <DisplayPercentComplete
         complete={achieved.appNum}
         total={currentUser.appGoal}
       />
-<<<<<<< HEAD
-      <Typography variant="h5">Networking</Typography>
-=======
       <ButtonGroup variant="contained">
         <Button onClick={() => handleButtonClick('appNum', -1)}>-</Button>
         <Button onClick={() => handleButtonClick('appNum', 1)}>+</Button>
       </ButtonGroup>
-      <Typography component="h3">Networking</Typography>
->>>>>>> c55b157aaef63a8e861e62b0d08b4482e379cc8a
+      <Typography variant="h5">Networking</Typography>
       <DisplayPercentComplete
         complete={achieved.networkNum}
         total={currentUser.networkGoal}
       />
-<<<<<<< HEAD
-      <Typography variant="h5">Meetups</Typography>
-      <DisplayPercentComplete
-        complete={achieved.meetupNum}
-        total={currentUser.meetupGoal}
-        variant="h5"
-      />
-      <Typography variant="h5">LinkedIn connections</Typography>
-=======
       <ButtonGroup variant="contained">
         <Button onClick={() => handleButtonClick('networkNum', -1)}>-</Button>
         <Button onClick={() => handleButtonClick('networkNum', 1)}>+</Button>
       </ButtonGroup>
-      <Typography component="h3">Meetups</Typography>
+      <Typography variant="h5">Meetups</Typography>
       <DisplayPercentComplete
         complete={achieved.meetupNum}
         total={currentUser.meetupGoal}
@@ -112,34 +86,25 @@ function Sidebar() {
         <Button onClick={() => handleButtonClick('meetupNum', -1)}>-</Button>
         <Button onClick={() => handleButtonClick('meetupNum', 1)}>+</Button>
       </ButtonGroup>
-      <Typography component="h3">LinkedIn connections</Typography>
->>>>>>> c55b157aaef63a8e861e62b0d08b4482e379cc8a
+      <Typography variant="h5">LinkedIn connections</Typography>
       <DisplayPercentComplete
         complete={achieved.linkedinNum}
         total={currentUser.linkedinGoal}
       />
-<<<<<<< HEAD
-      <Typography variant="h5">Coding Hours</Typography>
-=======
       <ButtonGroup variant="contained">
         <Button onClick={() => handleButtonClick('linkedinNum', -1)}>-</Button>
         <Button onClick={() => handleButtonClick('linkedinNum', 1)}>+</Button>
       </ButtonGroup>
-      <Typography component="h3">Coding Hours</Typography>
->>>>>>> c55b157aaef63a8e861e62b0d08b4482e379cc8a
+      <Typography variant="h5">Coding Hours</Typography>
       <DisplayPercentComplete
         complete={achieved.codeNum}
         total={currentUser.codeGoal}
       />
-<<<<<<< HEAD
-    </Box>
-=======
       <ButtonGroup variant="contained">
         <Button onClick={() => handleButtonClick('codeNum', -1)}>-</Button>
         <Button onClick={() => handleButtonClick('codeNum', 1)}>+</Button>
       </ButtonGroup>
-    </Container>
->>>>>>> c55b157aaef63a8e861e62b0d08b4482e379cc8a
+    </Box>
   );
 }
 
