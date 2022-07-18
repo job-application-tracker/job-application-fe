@@ -1,4 +1,4 @@
-import { Button, ButtonGroup, Container, Typography } from '@mui/material';
+import { Button, ButtonGroup, Container, Typography, Box } from '@mui/material';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useUserContext } from '../context/userContext';
@@ -50,8 +50,16 @@ function Sidebar() {
   };
 
   return (
-    <Container maxWidth="xs">
-      <Typography component="h3">Applications</Typography>
+    <Box
+      sx={{
+        bgcolor: 'background.paper',
+        boxShadow: 1,
+        borderRadius: 2,
+        p: 2,
+        maxWidth: '100%',
+      }}
+    >
+      <Typography variant="h5">Applications</Typography>
       <DisplayPercentComplete
         complete={achieved.appNum}
         total={currentUser.appGoal}
@@ -60,7 +68,7 @@ function Sidebar() {
         <Button onClick={() => handleButtonClick('appNum', -1)}>-</Button>
         <Button onClick={() => handleButtonClick('appNum', 1)}>+</Button>
       </ButtonGroup>
-      <Typography component="h3">Networking</Typography>
+      <Typography variant="h5">Networking</Typography>
       <DisplayPercentComplete
         complete={achieved.networkNum}
         total={currentUser.networkGoal}
@@ -69,7 +77,7 @@ function Sidebar() {
         <Button onClick={() => handleButtonClick('networkNum', -1)}>-</Button>
         <Button onClick={() => handleButtonClick('networkNum', 1)}>+</Button>
       </ButtonGroup>
-      <Typography component="h3">Meetups</Typography>
+      <Typography variant="h5">Meetups</Typography>
       <DisplayPercentComplete
         complete={achieved.meetupNum}
         total={currentUser.meetupGoal}
@@ -78,7 +86,7 @@ function Sidebar() {
         <Button onClick={() => handleButtonClick('meetupNum', -1)}>-</Button>
         <Button onClick={() => handleButtonClick('meetupNum', 1)}>+</Button>
       </ButtonGroup>
-      <Typography component="h3">LinkedIn connections</Typography>
+      <Typography variant="h5">LinkedIn connections</Typography>
       <DisplayPercentComplete
         complete={achieved.linkedinNum}
         total={currentUser.linkedinGoal}
@@ -87,7 +95,7 @@ function Sidebar() {
         <Button onClick={() => handleButtonClick('linkedinNum', -1)}>-</Button>
         <Button onClick={() => handleButtonClick('linkedinNum', 1)}>+</Button>
       </ButtonGroup>
-      <Typography component="h3">Coding Hours</Typography>
+      <Typography variant="h5">Coding Hours</Typography>
       <DisplayPercentComplete
         complete={achieved.codeNum}
         total={currentUser.codeGoal}
@@ -96,7 +104,7 @@ function Sidebar() {
         <Button onClick={() => handleButtonClick('codeNum', -1)}>-</Button>
         <Button onClick={() => handleButtonClick('codeNum', 1)}>+</Button>
       </ButtonGroup>
-    </Container>
+    </Box>
   );
 }
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useJobContext } from '../../context/JobContext';
 import Column from '../../components/Column/Column';
-import { CssBaseline, Grid } from '@mui/material';
+import { Box, CssBaseline, Grid, Typography } from '@mui/material';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { updateJob } from '../../services/jobs';
 import { Container } from '@mui/system';
@@ -72,44 +72,127 @@ export default function Board() {
       return null;
     }
   };
-  const closedStatus = ['Accepted', 'Ghosted', 'Rejected'];
+
   if (loadingStatus) return <div>loader</div>;
   return (
-    <Container>
-      // TODO: replace with toast notif
+    <>
+      {/* TODO: replace with toast notif */}
       {error && <p>{error}</p>}
       <DragDropContext onDragEnd={onDragEnd}>
-        <Grid container spacing={2} minHeight="100vh">
+        <Grid
+          container
+          spacing={2}
+          minHeight="100vh"
+          sx={{
+            alignItems: 'stretch',
+            justifyContent: 'space-evenly',
+          }}
+        >
           <Grid item xs={3} minHeight="100vh">
-            <Column id={'Saved'} list={status['Saved'].list} />
+            <Typography variant="h4">Saved</Typography>
+            <Box
+              sx={{
+                overflowY: 'auto',
+                minHeight: '100vh',
+                bgcolor: 'background.paper',
+                boxShadow: 1,
+                borderRadius: 2,
+                p: 2,
+              }}
+            >
+              <Column id={'Saved'} list={status['Saved'].list} />
+            </Box>
           </Grid>
           <Grid item xs={3} minHeight="100vh">
-            <Column id={'Applied'} list={status['Applied'].list} />
+            <Typography variant="h4">Applied</Typography>
+            <Box
+              sx={{
+                overflowY: 'auto',
+                minHeight: '100vh',
+                bgcolor: 'background.paper',
+                boxShadow: 1,
+                borderRadius: 2,
+                p: 2,
+              }}
+            >
+              <Column id={'Applied'} list={status['Applied'].list} />
+            </Box>
           </Grid>
           <Grid item xs={3} minHeight="100vh">
-            <Column id={'Interviewing'} list={status['Interviewing'].list} />
+            <Typography variant="h4">Interviewing</Typography>
+            <Box
+              sx={{
+                minHeight: '100vh',
+                overflowY: 'auto',
+                bgcolor: 'background.paper',
+                boxShadow: 1,
+                borderRadius: 2,
+                p: 2,
+              }}
+            >
+              <Column id={'Interviewing'} list={status['Interviewing'].list} />
+            </Box>
           </Grid>
-          <Grid item minHeight="100vh">
+          {/* nested grid starts here */}
+          <Grid item xs={3}>
             <Grid
+              minHeight="100vh"
               container
               direction={'column'}
-              justifyContent="space-evenly"
+              justifyContent="space-around"
               alignItems="flex-start"
+              spacing={5}
             >
-              <Grid item xs={3}>
-                <Column id={'Accepted'} list={status['Accepted'].list} />
+              <Grid item xs={4}>
+                <Typography variant="h4">Accepted</Typography>
+                <Box
+                  sx={{
+                    height: '33.33%',
+                    overflowY: 'auto',
+                    bgcolor: 'background.paper',
+                    boxShadow: 1,
+                    borderRadius: 2,
+                    p: 2,
+                  }}
+                >
+                  <Column id={'Accepted'} list={status['Accepted'].list} />
+                </Box>
               </Grid>
-              <Grid item xs={3}>
-                <Column id={'Ghosted'} list={status['Ghosted'].list} />
+              <Grid item xs={4}>
+                <Typography variant="h4">Ghosted</Typography>
+                <Box
+                  sx={{
+                    maxHeight: '33.33%',
+                    overflowY: 'auto',
+                    bgcolor: 'background.paper',
+                    boxShadow: 1,
+                    borderRadius: 2,
+                    p: 2,
+                  }}
+                >
+                  <Column id={'Ghosted'} list={status['Ghosted'].list} />
+                </Box>
               </Grid>
-              <Grid item xs={3}>
-                <Column id={'Rejected'} list={status['Rejected'].list} />
+              <Grid item xs={4}>
+                <Typography variant="h4">Rejected</Typography>
+                <Box
+                  sx={{
+                    height: '33.33%',
+                    overflowY: 'auto',
+                    bgcolor: 'background.paper',
+                    boxShadow: 1,
+                    borderRadius: 2,
+                    p: 2,
+                  }}
+                >
+                  <Column id={'Rejected'} list={status['Rejected'].list} />
+                </Box>
               </Grid>
             </Grid>
           </Grid>
         </Grid>
       </DragDropContext>
-    </Container>
+    </>
   );
 }
 
