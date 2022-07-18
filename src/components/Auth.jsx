@@ -94,6 +94,7 @@ function Auth({ nextStep, signUp, setSignUp }) {
             onChange={handleChange}
           />
           <TextField
+            placeholder="password"
             margin="normal"
             required
             fullWidth
