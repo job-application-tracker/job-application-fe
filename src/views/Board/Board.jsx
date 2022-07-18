@@ -140,8 +140,9 @@ export default function Board() {
               container
               direction={'column'}
               justifyContent="space-around"
-              alignItems="flex-start"
+              alignItems="stretch"
               spacing={5}
+              sx={{ marginRight: '10px' }}
             >
               <Grid item md={4}>
                 <Typography variant="h4">Accepted</Typography>
