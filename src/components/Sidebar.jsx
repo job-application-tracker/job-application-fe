@@ -62,6 +62,9 @@ function Sidebar() {
       }}
     >
       <Typography variant="h5">Applications</Typography>
+      <Typography variant="p">
+        {achieved.appNum}/{currentUser.appGoal}
+      </Typography>
       <ProgressBar
         completed={calculatePercent(achieved.appNum, currentUser.appGoal)}
         bgColor="#586F7C"
@@ -73,6 +76,9 @@ function Sidebar() {
         <Button onClick={() => handleButtonClick('appNum', 1)}>+</Button>
       </ButtonGroup>
       <Typography variant="h5">Networking</Typography>
+      <Typography variant="p">
+        {achieved.networkNum}/{currentUser.networkGoal}
+      </Typography>
       <ProgressBar
         completed={calculatePercent(
           achieved.networkNum,
@@ -85,6 +91,9 @@ function Sidebar() {
         <Button onClick={() => handleButtonClick('networkNum', 1)}>+</Button>
       </ButtonGroup>
       <Typography variant="h5">Meetups</Typography>
+      <Typography variant="p">
+        {achieved.meetupNum}/{currentUser.meetupGoal}
+      </Typography>
       <ProgressBar
         completed={calculatePercent(achieved.meetupNum, currentUser.meetupGoal)}
         labelAlignment="left"
@@ -94,6 +103,9 @@ function Sidebar() {
         <Button onClick={() => handleButtonClick('meetupNum', 1)}>+</Button>
       </ButtonGroup>
       <Typography variant="h5">LinkedIn connections</Typography>
+      <Typography variant="p">
+        {achieved.linkedinNum}/{currentUser.linkedinGoal}
+      </Typography>
       <ProgressBar
         completed={calculatePercent(
           achieved.linkedinNum,
@@ -106,6 +118,9 @@ function Sidebar() {
         <Button onClick={() => handleButtonClick('linkedinNum', 1)}>+</Button>
       </ButtonGroup>
       <Typography variant="h5">Coding Hours</Typography>
+      <Typography variant="p">
+        {achieved.codeNum}/{currentUser.codeGoal}
+      </Typography>
       <ProgressBar
         completed={calculatePercent(achieved.codeNum, currentUser.codeGoal)}
         labelAlignment="left"
