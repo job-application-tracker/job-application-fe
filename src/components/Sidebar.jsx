@@ -8,7 +8,6 @@ import {
   updateAchievements,
 } from '../services/achievements';
 import { calculatePercent } from '../utils/percent';
-import DisplayPercentComplete from './DisplayPercentComplete';
 
 function Sidebar() {
   const { currentUser } = useUserContext();
@@ -62,22 +61,14 @@ function Sidebar() {
       }}
     >
       <Typography variant="h5">Applications</Typography>
-      <DisplayPercentComplete
-        complete={achieved.appNum}
-        total={currentUser.appGoal}
-      />
       <ProgressBar
-        completed={Math.round((achieved.appNum / currentUser.appGoal) * 100)}
+        completed={calculatePercent(achieved.appNum, currentUser.appGoal)}
       />
       <ButtonGroup variant="contained">
         <Button onClick={() => handleButtonClick('appNum', -1)}>-</Button>
         <Button onClick={() => handleButtonClick('appNum', 1)}>+</Button>
       </ButtonGroup>
       <Typography variant="h5">Networking</Typography>
-      <DisplayPercentComplete
-        complete={achieved.networkNum}
-        total={currentUser.networkGoal}
-      />
       <ProgressBar
         completed={calculatePercent(
           achieved.networkNum,
@@ -89,27 +80,27 @@ function Sidebar() {
         <Button onClick={() => handleButtonClick('networkNum', 1)}>+</Button>
       </ButtonGroup>
       <Typography variant="h5">Meetups</Typography>
-      <DisplayPercentComplete
-        complete={achieved.meetupNum}
-        total={currentUser.meetupGoal}
+      <ProgressBar
+        completed={calculatePercent(achieved.meetupNum, currentUser.meetupGoal)}
       />
       <ButtonGroup variant="contained">
         <Button onClick={() => handleButtonClick('meetupNum', -1)}>-</Button>
         <Button onClick={() => handleButtonClick('meetupNum', 1)}>+</Button>
       </ButtonGroup>
       <Typography variant="h5">LinkedIn connections</Typography>
-      <DisplayPercentComplete
-        complete={achieved.linkedinNum}
-        total={currentUser.linkedinGoal}
+      <ProgressBar
+        completed={calculatePercent(
+          achieved.linkedinNum,
+          currentUser.linkedinGoal
+        )}
       />
       <ButtonGroup variant="contained">
         <Button onClick={() => handleButtonClick('linkedinNum', -1)}>-</Button>
         <Button onClick={() => handleButtonClick('linkedinNum', 1)}>+</Button>
       </ButtonGroup>
       <Typography variant="h5">Coding Hours</Typography>
-      <DisplayPercentComplete
-        complete={achieved.codeNum}
-        total={currentUser.codeGoal}
+      <ProgressBar
+        completed={calculatePercent(achieved.codeNum, currentUser.codeGoal)}
       />
       <ButtonGroup variant="contained">
         <Button onClick={() => handleButtonClick('codeNum', -1)}>-</Button>
