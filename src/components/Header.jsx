@@ -14,7 +14,7 @@ function Header() {
     history.push('/');
   };
   return (
-    <Box>
+    <Box sx={{ height: '80px', borderBottom: '1px black solid' }}>
       <CssBaseline />
       <Stack direction="row" spacing={2} justifyContent="space-between">
         {currentUser.email && (
