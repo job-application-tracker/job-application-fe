@@ -39,7 +39,7 @@ export default function ModalForm({
   stateAction,
   initialState,
 }) {
-  const { handleChange, formState } = useForm(initialState);
+  const { handleChange, formState, clearForm } = useForm(initialState);
   const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
@@ -48,6 +48,7 @@ export default function ModalForm({
       setError('');
       const data = await crudAction(formState);
       stateAction(data);
+      clearForm();
       handleClose();
     } catch (error) {
       setError(error.message);

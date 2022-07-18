@@ -14,9 +14,7 @@ export default function useForm(inputs = {}) {
   };
 
   const clearForm = () => {
-    for (let key in formState) {
-      setFormState((prev) => ({ ...prev, [key]: '' }));
-    }
+    setFormState(inputs);
   };
   return { formState, handleChange, clearForm };
 }
