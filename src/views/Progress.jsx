@@ -7,6 +7,7 @@ import { useUserContext } from '../context/userContext';
 import Board from './Board/Board';
 import { CustomButton } from '../components/styled/CustomButton';
 import { useJobContext } from '../context/JobContext';
+import { createJob } from '../services/jobs';
 
 export default function Progress() {
   const { getCurrentUser } = useUserContext();
@@ -45,7 +46,7 @@ export default function Progress() {
       <ModalForm
         open={open}
         handleClose={handleClose}
-        crudAction={() => {}}
+        crudAction={createJob}
         stateAction={updateStateFromModal}
         initialState={jobInfo}
       />

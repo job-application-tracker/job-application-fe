@@ -48,13 +48,14 @@ export default function ModalForm({
       setError('');
       const data = await crudAction(formState);
       stateAction(data);
+      handleClose();
     } catch (error) {
       setError(error.message);
       console.log(error);
     }
   };
   return (
-    <StyledModal open={true} onClose={handleClose}>
+    <StyledModal open={open} onClose={handleClose}>
       <Box
         padding="50px"
         width={600}
@@ -121,7 +122,11 @@ export default function ModalForm({
               </Select>
             </Grid>
             <Grid md="auto" item>
-              <CustomButton sx={{ height: '45px' }} variant="contained">
+              <CustomButton
+                type="submit"
+                sx={{ height: '45px' }}
+                variant="contained"
+              >
                 Save
               </CustomButton>
             </Grid>
