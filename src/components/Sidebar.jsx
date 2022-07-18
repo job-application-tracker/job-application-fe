@@ -12,6 +12,7 @@ import { calculatePercent } from '../utils/percent';
 function Sidebar() {
   const { currentUser } = useUserContext();
   const [achieved, setAchieved] = useState({});
+  const [loadingGoals, setLoadingGoals] = useState(true);
 
   //calculating the current week
   const date = new Date();
@@ -27,6 +28,7 @@ function Sidebar() {
         const getData = async () => {
           const achievements = await getAchievementsByWeek(year, weekNumber);
           setAchieved(achievements);
+          setLoadingGoals(false);
         };
         getData();
       }
@@ -49,6 +51,8 @@ function Sidebar() {
       console.log(e.message);
     }
   };
+
+  if (loadingGoals) return <p>Loading...</p>;
 
   return (
     <Box
