@@ -1,9 +1,6 @@
-import { ThemeContext } from '@emotion/react';
 import { CssBaseline, FormControlLabel, FormGroup, Stack } from '@mui/material';
 import { Box } from '@mui/system';
 import React from 'react';
-import { useContext } from 'react';
-import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useModeContext } from '../context/ModeContext';
 import { useUserContext } from '../context/userContext';

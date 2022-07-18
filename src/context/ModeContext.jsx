@@ -1,3 +1,4 @@
+import { createTheme } from '@mui/material';
 import { useContext } from 'react';
 import { useState } from 'react';
 import { createContext } from 'react';
@@ -19,7 +20,7 @@ const ModeProvider = ({ children }) => {
   };
 
   return (
-    <ModeContext.Provider value={{ changeMode, toggle }}>
+    <ModeContext.Provider value={{ changeMode }}>
       {children}
     </ModeContext.Provider>
   );

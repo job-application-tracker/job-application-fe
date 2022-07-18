@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  Grid,
   InputLabel,
   MenuItem,
   Modal,
@@ -11,6 +12,7 @@ import {
 } from '@mui/material';
 import React, { useState } from 'react';
 import useForm from '../hooks/useForm';
+import { CustomButton } from './styled/CustomButton';
 const StyledModal = styled(Modal)({
   display: 'flex',
   justifyContent: 'center',
@@ -54,6 +56,7 @@ export default function ModalForm({
   return (
     <StyledModal open={open} onClose={handleClose}>
       <Box
+        padding="50px"
         width={600}
         height={800}
         sx={{
@@ -62,6 +65,9 @@ export default function ModalForm({
           borderRadius: '10px',
         }}
       >
+        <Typography variant="h4" textAlign={'center'}>
+          Add a new application
+        </Typography>
         <Box component="form" noValidate onSubmit={handleSubmit}>
           <TextInput
             name="position"
@@ -83,23 +89,43 @@ export default function ModalForm({
             value={formState.notes}
             onChange={handleChange}
           />
-          <InputLabel id="status">Status</InputLabel>
-          <Select
-            id="status"
-            name="status"
-            label="Status"
-            defaultValue="Saved"
-            value={formState.status}
-            onChange={handleChange}
+          <InputLabel sx={{ paddingTop: '30px' }} id="status">
+            Status
+          </InputLabel>
+          <Grid
+            container
+            sx={{
+              height: '300px',
+              // backgroundColor: 'primary.dark',
+              justifyContent: 'flex-end',
+              alignItems: 'stretch',
+              flexDirection: 'column',
+            }}
           >
-            <MenuItem value="Saved">Saved</MenuItem>
-            <MenuItem value="Applied">Applied</MenuItem>
-            <MenuItem value="Interviewing">Interviewing</MenuItem>
-            <MenuItem value="Accepted">Accepted</MenuItem>
-            <MenuItem value="Ghosted">Ghosted</MenuItem>
-            <MenuItem value="Rejected">Rejected</MenuItem>
-          </Select>
-          <Button>Save</Button>
+            <Grid xs={9} item>
+              <Select
+                sx={{ width: '100%', heigh: '45px' }}
+                id="status"
+                name="status"
+                label="Status"
+                defaultValue="Saved"
+                value={formState.status}
+                onChange={handleChange}
+              >
+                <MenuItem value="Saved">Saved</MenuItem>
+                <MenuItem value="Applied">Applied</MenuItem>
+                <MenuItem value="Interviewing">Interviewing</MenuItem>
+                <MenuItem value="Accepted">Accepted</MenuItem>
+                <MenuItem value="Ghosted">Ghosted</MenuItem>
+                <MenuItem value="Rejected">Rejected</MenuItem>
+              </Select>
+            </Grid>
+            <Grid xs="auto" item>
+              <CustomButton sx={{ height: '45px' }} variant="contained">
+                Save
+              </CustomButton>
+            </Grid>
+          </Grid>
           {error && <Typography>{error}</Typography>}
         </Box>
       </Box>
