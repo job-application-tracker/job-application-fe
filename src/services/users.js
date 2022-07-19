@@ -34,7 +34,6 @@ export async function getUser() {
       credentials: 'include',
     });
     const userData = await user.json();
-    // console.log('userData', userData);
     return userData;
   } catch (e) {
     console.log(e.message);
@@ -48,7 +47,6 @@ export async function getCurrentGoals() {
       credentials: 'include',
     });
     const userData = await user.json();
-    console.log('userData', userData);
     return userData;
   } catch (e) {
     console.log(e.message);

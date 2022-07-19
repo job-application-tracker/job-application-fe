@@ -3,7 +3,7 @@ import React from 'react';
 import { useState } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 import { useJobContext } from '../../context/JobContext';
-import { updateJob } from '../../services/jobs';
+import { deleteJob, updateJob } from '../../services/jobs';
 import ModalForm from '../ModalForm';
 
 export default function Job({
@@ -31,6 +31,15 @@ export default function Job({
       return newState;
     });
   };
+  const deleteAction = async () => {
+    setStatus((prev) => {
+      const newState = { ...prev };
+
+      newState[status].list = prev[status].list.filter((j) => j.id !== id);
+      return newState;
+    });
+    await deleteJob(id);
+  };
 
   return (
     <Draggable draggableId={id} index={index}>
@@ -52,6 +61,7 @@ export default function Job({
             initialState={{ position, company, description, notes, status }}
             crudAction={updateJobDetails}
             stateAction={updateStateFromModal}
+            deleteAction={deleteAction}
           />
         </>
       )}

@@ -9,7 +9,6 @@ export async function getAchievementsByWeek(year, week) {
       }
     );
     const achievementsData = await achievements.json();
-    console.log('achievementsData', achievementsData);
     return achievementsData;
   } catch (error) {
     console.log(error.message);

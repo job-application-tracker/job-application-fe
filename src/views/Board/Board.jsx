@@ -24,7 +24,7 @@ export default function Board() {
     try {
       setError('');
       if (start === end) {
-        const newList = list.filter((item, i) => i !== source.index);
+        const newList = start.list.filter((item, i) => i !== source.index);
         newList.splice(destination.index, 0, start.list[source.index]);
         const newCol = {
           id: start.id,
@@ -34,8 +34,8 @@ export default function Board() {
         setStatus((state) => ({ ...state, [newCol.id]: newCol }));
         return null;
       } else {
+        //filter out the item
         const newStartList = start.list.filter((item, i) => i !== source.index);
-
         const newStartCol = {
           id: start.id,
           list: newStartList,
@@ -45,7 +45,10 @@ export default function Board() {
         const newEndList = end.list;
 
         // Insert the item into the end list
-        newEndList.splice(destination.index, 0, start.list[source.index]);
+        newEndList.splice(destination.index, 0, {
+          ...start.list[source.index],
+          status: end.id,
+        });
 
         // Create a new end column
         const newEndCol = {
@@ -53,22 +56,17 @@ export default function Board() {
           list: newEndList,
         };
 
-        // Update the state
-        // await updateJob(
-        //   { ...start.list[source.index], status: end.id },
-        //   destination.index
-        // );
-        setStatus((prev) => ({
-          ...prev,
-          [newStartCol.id]: newStartCol,
-          [newEndCol.id]: newEndCol,
-        }));
-
+        setStatus((prev) => {
+          return {
+            ...prev,
+            [newStartCol.id]: newStartCol,
+            [newEndCol.id]: newEndCol,
+          };
+        });
         return null;
       }
     } catch (error) {
       setError(error.message);
-      console.error(error);
       return null;
     }
   };

@@ -25,7 +25,6 @@ export async function updateJob(id, state, index) {
   };
   const updatedData = await fetch(requestUrl, requestInfo);
 
-  console.log('resp', updatedData);
   if (!updatedData.ok) {
     throw new Error(`Error fetching job with id: ${id}`);
   }
@@ -49,4 +48,19 @@ export async function createJob(formData) {
   }
   const job = await newJob.json();
   return job;
+}
+
+export async function deleteJob(id) {
+  const requestUrl = `${url}/api/v1/trackers/${id}`;
+  const requestInfo = {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+    credentials: 'include',
+    mode: 'cors',
+  };
+  const newJob = await fetch(requestUrl, requestInfo);
+
+  if (!newJob.ok) {
+    throw new Error(`Error deleting a job.`);
+  }
 }
