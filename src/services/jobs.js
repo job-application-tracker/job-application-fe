@@ -14,14 +14,14 @@ export async function fetchJobs() {
   return await jobs.json();
 }
 
-export async function updateJob({ id, status }, index) {
+export async function updateJob(id, state, index) {
   const requestUrl = `${url}/api/v1/trackers/${id}`;
   const requestInfo = {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     credentials: 'include',
     mode: 'cors',
-    body: JSON.stringify({ index, status }),
+    body: JSON.stringify({ index, ...state }),
   };
   const updatedData = await fetch(requestUrl, requestInfo);
 

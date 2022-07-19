@@ -41,7 +41,7 @@ export default function ModalForm({
 }) {
   const { handleChange, formState, clearForm } = useForm(initialState);
   const [error, setError] = useState('');
-
+  console.log('initialState', initialState);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -110,7 +110,7 @@ export default function ModalForm({
                 id="status"
                 name="status"
                 label="Status"
-                defaultValue="Saved"
+                // defaultValue="Saved"
                 value={formState.status}
                 onChange={handleChange}
               >
