@@ -3,6 +3,7 @@ import React from 'react';
 import { useState } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 import { useJobContext } from '../../context/JobContext';
+import { updateJob } from '../../services/jobs';
 import ModalForm from '../ModalForm';
 
 export default function Job({
@@ -15,15 +16,18 @@ export default function Job({
   //TODO: SWITCH INDEX FROM HARDCODED
   //TODO: Rename this variable
   const updateJobDetails = async (formState) => {
-    const ughWhat = await updateJob(id, formState, 0);
-    return ughWhat;
+    const updatedJob = await updateJob(id, formState, 0);
+    return updatedJob;
   };
 
   const updateStateFromModal = (newJob) => {
     setStatus((prev) => {
       const newState = { ...prev };
       const { status } = newJob;
-      newState[status].list = [...prev[status].list, newJob];
+      newState[status].list = [
+        ...prev[status].list.filter((j) => j.id !== newJob.id),
+        newJob,
+      ];
       return newState;
     });
   };
@@ -43,8 +47,9 @@ export default function Job({
           </Card>
           <ModalForm
             open={editing}
+            editing
             handleClose={() => setEditing(false)}
-            initialState={{ position, company, id, description, notes, status }}
+            initialState={{ position, company, description, notes, status }}
             crudAction={updateJobDetails}
             stateAction={updateStateFromModal}
           />
