@@ -6,6 +6,7 @@ import { Box } from '@mui/system';
 import { CssBaseline } from '@mui/material';
 import { useUserContext } from './context/userContext';
 import PrivateRoute from './components/PrivateRoute';
+import Stats from './views/Stats';
 
 export default function App() {
   const { currentUser, activeStep } = useUserContext();
@@ -17,6 +18,9 @@ export default function App() {
       <Switch>
         <PrivateRoute path={'/progress'}>
           <Progress />
+        </PrivateRoute>
+        <PrivateRoute path={'/stats'}>
+          <Stats />
         </PrivateRoute>
         <Route exact path={'/'}>
           {!currentUser.email || activeStep === 1 ? (
