@@ -1,4 +1,10 @@
-import { CssBaseline, FormControlLabel, FormGroup, Stack, Typography, Stack } from '@mui/material';
+import {
+  CssBaseline,
+  FormControlLabel,
+  FormGroup,
+  Stack,
+  Typography,
+} from '@mui/material';
 
 import { Box } from '@mui/system';
 import React from 'react';
