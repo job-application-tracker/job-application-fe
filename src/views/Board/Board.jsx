@@ -30,7 +30,6 @@ export default function Board() {
           id: start.id,
           list: newList,
         };
-        // await updateJob(start.list[source.index], destination.index);
         setStatus((state) => ({ ...state, [newCol.id]: newCol }));
         return null;
       } else {
@@ -43,19 +42,20 @@ export default function Board() {
 
         // Make a new end list array
         const newEndList = end.list;
-
-        // Insert the item into the end list
-        newEndList.splice(destination.index, 0, {
+        const newJob = {
           ...start.list[source.index],
           status: end.id,
-        });
+        };
+
+        // Insert the item into the end list
+        newEndList.splice(destination.index, 0, newJob);
 
         // Create a new end column
         const newEndCol = {
           id: end.id,
           list: newEndList,
         };
-
+        await updateJob(newJob.id, newJob);
         setStatus((prev) => {
           return {
             ...prev,

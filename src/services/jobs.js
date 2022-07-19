@@ -14,14 +14,14 @@ export async function fetchJobs() {
   return await jobs.json();
 }
 
-export async function updateJob(id, state, index) {
+export async function updateJob(id, state) {
   const requestUrl = `${url}/api/v1/trackers/${id}`;
   const requestInfo = {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     credentials: 'include',
     mode: 'cors',
-    body: JSON.stringify({ index, ...state }),
+    body: JSON.stringify(state),
   };
   const updatedData = await fetch(requestUrl, requestInfo);
 
@@ -33,13 +33,12 @@ export async function updateJob(id, state, index) {
 }
 export async function createJob(formData) {
   const requestUrl = `${url}/api/v1/trackers`;
-  // todo: change hardcoded index
   const requestInfo = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     credentials: 'include',
     mode: 'cors',
-    body: JSON.stringify({ ...formData, index: 0 }),
+    body: JSON.stringify(formData),
   };
   const newJob = await fetch(requestUrl, requestInfo);
 
