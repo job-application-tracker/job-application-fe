@@ -50,3 +50,20 @@ export async function fetchSumAchievements() {
     return null;
   }
 }
+
+export async function fetchTotalAchievements() {
+  try {
+    const sums = await fetch(url + '/api/v1/achievements/sums', {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      mode: 'cors',
+    });
+    const totalsData = await sums.json();
+    console.log('totalsData', totalsData);
+    return totalsData;
+  } catch (error) {
+    console.log(error.message);
+    return null;
+  }
+}
