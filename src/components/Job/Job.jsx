@@ -16,10 +16,12 @@ export default function Job({
   //TODO: SWITCH INDEX FROM HARDCODED
   //TODO: Rename this variable
   const updateJobDetails = async (formState) => {
-    const updatedJob = await updateJob(id, formState, 0);
+    const updatedJob = await updateJob(id, formState);
     return updatedJob;
   };
 
+  //todo: find why form state is occasionally not updating on the front end
+  // (filling the form properly)
   const updateStateFromModal = (newJob) => {
     setStatus((prev) => {
       const newState = { ...prev };

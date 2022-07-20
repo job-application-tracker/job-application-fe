@@ -11,7 +11,6 @@ const UserProvider = ({ children }) => {
 
   const nextStep = () => {
     if (activeStep <= 2) setActiveStep((prevStep) => prevStep + 1);
-    console.log('activeStep', activeStep);
   };
 
   const logOut = async () => {
