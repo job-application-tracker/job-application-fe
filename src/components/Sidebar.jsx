@@ -37,8 +37,6 @@ function Sidebar() {
     }
   }, []);
 
-  console.log('achieved', achieved);
-
   const handleButtonClick = async (achType, value) => {
     try {
       if (value < 0 && achieved[achType] === 0) return;
