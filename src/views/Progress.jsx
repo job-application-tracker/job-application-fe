@@ -1,7 +1,7 @@
-import { Button } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import ModalForm from '../components/ModalForm';
-import { Container, Grid } from '@mui/material';
+import { Grid } from '@mui/material';
 import Sidebar from '../components/Sidebar';
 import { useUserContext } from '../context/userContext';
 import Board from './Board/Board';
@@ -40,9 +40,17 @@ export default function Progress() {
   };
   return (
     <>
-      <CustomButton variant="contained" onClick={() => setOpen(true)}>
-        Open
-      </CustomButton>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'flex-end',
+          padding: 1.5,
+        }}
+      >
+        <CustomButton variant="contained" onClick={() => setOpen(true)}>
+          Create
+        </CustomButton>
+      </Box>
       <ModalForm
         open={open}
         handleClose={handleClose}
@@ -50,7 +58,7 @@ export default function Progress() {
         stateAction={updateStateFromModal}
         initialState={jobInfo}
       />
-      <Grid container spacing={2}>
+      <Grid sx={{ padding: 1.5 }} container spacing={2}>
         <Grid item md={2}>
           <Sidebar />
         </Grid>

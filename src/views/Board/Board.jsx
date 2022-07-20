@@ -87,7 +87,9 @@ export default function Board() {
           }}
         >
           <Grid item md={3} minHeight="100vh">
-            <Typography variant="h4">Saved</Typography>
+            <Typography textAlign="center" variant="h4">
+              Saved
+            </Typography>
             <Box
               sx={{
                 overflowY: 'auto',
@@ -102,7 +104,9 @@ export default function Board() {
             </Box>
           </Grid>
           <Grid item md={3} minHeight="100vh">
-            <Typography variant="h4">Applied</Typography>
+            <Typography textAlign="center" variant="h4">
+              Applied
+            </Typography>
             <Box
               sx={{
                 overflowY: 'auto',
@@ -117,7 +121,9 @@ export default function Board() {
             </Box>
           </Grid>
           <Grid item md={3} minHeight="100vh">
-            <Typography variant="h4">Interviewing</Typography>
+            <Typography textAlign="center" variant="h4">
+              Interviewing
+            </Typography>
             <Box
               sx={{
                 minHeight: '100vh',
@@ -143,7 +149,9 @@ export default function Board() {
               sx={{ marginRight: '10px' }}
             >
               <Grid item md={4}>
-                <Typography variant="h4">Accepted</Typography>
+                <Typography textAlign="center" variant="h4">
+                  Accepted
+                </Typography>
                 <Box
                   sx={{
                     height: '33.33%',
@@ -158,7 +166,9 @@ export default function Board() {
                 </Box>
               </Grid>
               <Grid item md={4}>
-                <Typography variant="h4">Ghosted</Typography>
+                <Typography textAlign="center" variant="h4">
+                  Ghosted
+                </Typography>
                 <Box
                   sx={{
                     maxHeight: '33.33%',
@@ -173,7 +183,9 @@ export default function Board() {
                 </Box>
               </Grid>
               <Grid item md={4}>
-                <Typography variant="h4">Rejected</Typography>
+                <Typography textAlign="center" variant="h4">
+                  Rejected
+                </Typography>
                 <Box
                   sx={{
                     height: '33.33%',

@@ -8,6 +8,7 @@ import {
   updateAchievements,
 } from '../services/achievements';
 import { calculatePercent } from '../utils/percent';
+import theme from '../utils/theme';
 
 function Sidebar() {
   const { currentUser } = useUserContext();
@@ -53,85 +54,103 @@ function Sidebar() {
   if (loadingGoals) return <p>Loading...</p>;
 
   return (
-    <Box
-      sx={{
-        bgcolor: 'background.paper',
-        boxShadow: 1,
-        borderRadius: 2,
-        p: 2,
-        maxWidth: '100%',
-        textAlign: 'center',
-      }}
-    >
-      <Typography variant="h5">Applications</Typography>
-      <Typography variant="p">
-        {achieved.appNum}/{currentUser.appGoal}
+    <>
+      <Typography textAlign="center" variant="h4">
+        Weekly Goals
       </Typography>
-      <ProgressBar
-        completed={calculatePercent(achieved.appNum, currentUser.appGoal)}
-        bgColor="#586F7C"
-        labelAlignment="left"
-        labelColor="#000000"
-      />
-      <ButtonGroup variant="contained">
-        <Button onClick={() => handleButtonClick('appNum', -1)}>-</Button>
-        <Button onClick={() => handleButtonClick('appNum', 1)}>+</Button>
-      </ButtonGroup>
-      <Typography variant="h5">Networking</Typography>
-      <Typography variant="p">
-        {achieved.networkNum}/{currentUser.networkGoal}
-      </Typography>
-      <ProgressBar
-        completed={calculatePercent(
-          achieved.networkNum,
-          currentUser.networkGoal
-        )}
-        labelAlignment="left"
-      />
-      <ButtonGroup variant="contained">
-        <Button onClick={() => handleButtonClick('networkNum', -1)}>-</Button>
-        <Button onClick={() => handleButtonClick('networkNum', 1)}>+</Button>
-      </ButtonGroup>
-      <Typography variant="h5">Meetups</Typography>
-      <Typography variant="p">
-        {achieved.meetupNum}/{currentUser.meetupGoal}
-      </Typography>
-      <ProgressBar
-        completed={calculatePercent(achieved.meetupNum, currentUser.meetupGoal)}
-        labelAlignment="left"
-      />
-      <ButtonGroup variant="contained">
-        <Button onClick={() => handleButtonClick('meetupNum', -1)}>-</Button>
-        <Button onClick={() => handleButtonClick('meetupNum', 1)}>+</Button>
-      </ButtonGroup>
-      <Typography variant="h5">LinkedIn connections</Typography>
-      <Typography variant="p">
-        {achieved.linkedinNum}/{currentUser.linkedinGoal}
-      </Typography>
-      <ProgressBar
-        completed={calculatePercent(
-          achieved.linkedinNum,
-          currentUser.linkedinGoal
-        )}
-        labelAlignment="left"
-      />
-      <ButtonGroup variant="contained">
-        <Button onClick={() => handleButtonClick('linkedinNum', -1)}>-</Button>
-        <Button onClick={() => handleButtonClick('linkedinNum', 1)}>+</Button>
-      </ButtonGroup>
-      <Typography variant="h5">Coding Hours</Typography>
-      <Typography variant="p">
-        {achieved.codeNum}/{currentUser.codeGoal}
-      </Typography>
-      <ProgressBar
-        completed={calculatePercent(achieved.codeNum, currentUser.codeGoal)}
-        labelAlignment="left"
-      />
-      <ButtonGroup variant="contained">
-        <Button onClick={() => handleButtonClick('codeNum', -1)}>-</Button>
-        <Button onClick={() => handleButtonClick('codeNum', 1)}>+</Button>
-      </ButtonGroup>
-    </Box>
+      <Box
+        sx={{
+          bgcolor: 'background.paper',
+          boxShadow: 1,
+          borderRadius: 2,
+          p: 2,
+          maxWidth: '100%',
+          textAlign: 'center',
+        }}
+      >
+        <Typography variant="h5">Applications</Typography>
+        <Typography variant="p">
+          {achieved.appNum}/{currentUser.appGoal}
+        </Typography>
+        <ProgressBar
+          completed={calculatePercent(achieved.appNum, currentUser.appGoal)}
+          bgColor={theme.palette.primary.light}
+          labelAlignment="left"
+          labelColor="#000000"
+        />
+        <ButtonGroup sx={{ margin: '10px 0' }} variant="contained">
+          <Button onClick={() => handleButtonClick('appNum', -1)}>-</Button>
+          <Button onClick={() => handleButtonClick('appNum', 1)}>+</Button>
+        </ButtonGroup>
+        <Typography variant="h5">Networking</Typography>
+        <Typography variant="p">
+          {achieved.networkNum}/{currentUser.networkGoal}
+        </Typography>
+        <ProgressBar
+          completed={calculatePercent(
+            achieved.networkNum,
+            currentUser.networkGoal
+          )}
+          bgColor={theme.palette.primary.light}
+          labelAlignment="left"
+          labelColor="#000000"
+        />
+        <ButtonGroup sx={{ margin: '10px 0' }} variant="contained">
+          <Button onClick={() => handleButtonClick('networkNum', -1)}>-</Button>
+          <Button onClick={() => handleButtonClick('networkNum', 1)}>+</Button>
+        </ButtonGroup>
+        <Typography variant="h5">Meetups</Typography>
+        <Typography variant="p">
+          {achieved.meetupNum}/{currentUser.meetupGoal}
+        </Typography>
+        <ProgressBar
+          completed={calculatePercent(
+            achieved.meetupNum,
+            currentUser.meetupGoal
+          )}
+          bgColor={theme.palette.primary.light}
+          labelAlignment="left"
+          labelColor="#000000"
+        />
+        <ButtonGroup sx={{ margin: '10px 0' }} variant="contained">
+          <Button onClick={() => handleButtonClick('meetupNum', -1)}>-</Button>
+          <Button onClick={() => handleButtonClick('meetupNum', 1)}>+</Button>
+        </ButtonGroup>
+        <Typography variant="h5">LinkedIn connections</Typography>
+        <Typography variant="p">
+          {achieved.linkedinNum}/{currentUser.linkedinGoal}
+        </Typography>
+        <ProgressBar
+          completed={calculatePercent(
+            achieved.linkedinNum,
+            currentUser.linkedinGoal
+          )}
+          bgColor={theme.palette.primary.light}
+          labelAlignment="left"
+          labelColor="#000000"
+        />
+        <ButtonGroup sx={{ margin: '10px 0' }} variant="contained">
+          <Button onClick={() => handleButtonClick('linkedinNum', -1)}>
+            -
+          </Button>
+          <Button onClick={() => handleButtonClick('linkedinNum', 1)}>+</Button>
+        </ButtonGroup>
+        <Typography variant="h5">Coding Hours</Typography>
+        <Typography variant="p">
+          {achieved.codeNum}/{currentUser.codeGoal}
+        </Typography>
+        <ProgressBar
+          completed={calculatePercent(achieved.codeNum, currentUser.codeGoal)}
+          bgColor={theme.palette.primary.light}
+          labelAlignment="left"
+          labelColor="#000000"
+        />
+        <ButtonGroup sx={{ margin: '10px 0' }} variant="contained">
+          <Button onClick={() => handleButtonClick('codeNum', -1)}>-</Button>
+          <Button onClick={() => handleButtonClick('codeNum', 1)}>+</Button>
+        </ButtonGroup>
+      </Box>
+    </>
   );
 }
 
