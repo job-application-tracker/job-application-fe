@@ -41,7 +41,6 @@ function Header({ setLightMode, lightMode }) {
                 defaultChecked
               />
             }
-            label="MUI switch"
           />
         </FormGroup>
       </Stack>
