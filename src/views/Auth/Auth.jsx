@@ -37,7 +37,7 @@ function Auth({ nextStep, signUp, setSignUp }) {
       >
         {'Copyright © '}
         <MuiLink color="inherit" href="https://mui.com/">
-          JOBS.find()
+          find(job)
         </MuiLink>{' '}
         {new Date().getFullYear()}
         {'.'}

@@ -14,14 +14,14 @@ export async function fetchJobs() {
   return await jobs.json();
 }
 
-export async function updateJob({ id, status }, index) {
+export async function updateJob(id, state) {
   const requestUrl = `${url}/api/v1/trackers/${id}`;
   const requestInfo = {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     credentials: 'include',
     mode: 'cors',
-    body: JSON.stringify({ index, status }),
+    body: JSON.stringify(state),
   };
   const updatedData = await fetch(requestUrl, requestInfo);
 
@@ -33,13 +33,12 @@ export async function updateJob({ id, status }, index) {
 }
 export async function createJob(formData) {
   const requestUrl = `${url}/api/v1/trackers`;
-  // todo: change hardcoded index
   const requestInfo = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     credentials: 'include',
     mode: 'cors',
-    body: JSON.stringify({ ...formData, index: 0 }),
+    body: JSON.stringify(formData),
   };
   const newJob = await fetch(requestUrl, requestInfo);
 
@@ -48,4 +47,19 @@ export async function createJob(formData) {
   }
   const job = await newJob.json();
   return job;
+}
+
+export async function deleteJob(id) {
+  const requestUrl = `${url}/api/v1/trackers/${id}`;
+  const requestInfo = {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+    credentials: 'include',
+    mode: 'cors',
+  };
+  const newJob = await fetch(requestUrl, requestInfo);
+
+  if (!newJob.ok) {
+    throw new Error(`Error deleting a job.`);
+  }
 }
