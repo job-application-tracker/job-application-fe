@@ -6,7 +6,7 @@ import Sidebar from '../components/Sidebar';
 
 export default function Stats() {
   return (
-    <Grid container spacing={2}>
+    <Grid sx={{ padding: 1.5 }} container spacing={2}>
       <Grid item md={2}>
         <Sidebar />
       </Grid>
@@ -20,7 +20,6 @@ export default function Stats() {
           flexDirection: 'column',
         }}
       >
-        
         <Graph />
       </Grid>
       <Grid item md={3}>

@@ -1,4 +1,5 @@
 import {
+  ButtonGroup,
   CssBaseline,
   FormControlLabel,
   FormGroup,
@@ -17,7 +18,7 @@ import { MaterialUISwitch } from './styled/ToggleDarkMode';
 function Header() {
   const history = useHistory();
   const location = useLocation();
-  const { currentUser, logOut } = useUserContext();
+  const { activeStep, currentUser, logOut } = useUserContext();
   const changeMode = useModeContext();
 
   const handleChange = () => {
@@ -28,50 +29,63 @@ function Header() {
     await logOut();
     history.push('/');
   };
+
   return (
-    <Box sx={{ height: '80px', borderBottom: '1px black solid' }}>
+    <Box sx={{ height: '100px', borderBottom: '1px black solid' }}>
       <CssBaseline />
       <Stack direction="row" spacing={2} justifyContent="space-between">
-        <Typography variant="h1">find.job()</Typography>
-        {currentUser.email && (
-          <>
-            {location.pathname === '/stats' ? (
-              <CustomButton
-                variant="contained"
-                onClick={() => history.push('/progress')}
-              >
-                Job Tracker
-              </CustomButton>
-            ) : (
-              <CustomButton
-                variant="contained"
-                onClick={() => history.push('/stats')}
-              >
-                Stats
-              </CustomButton>
-            )}
-            <CustomButton
-              onClick={handleClick}
-              type="submit"
-              variant="contained"
-            >
-              Logout
-            </CustomButton>
-          </>
-        )}
-        <FormGroup>
-          <FormControlLabel
-            control={
-              <MaterialUISwitch
-                onChange={handleChange}
-                inputProps={{ 'aria-label': 'controlled' }}
-                sx={{ m: 1 }}
-                defaultChecked
-              />
-            }
-            label="MUI switch"
-          />
-        </FormGroup>
+        <Typography variant="h1" sx={{ padding: 1.5 }}>
+          find.job()
+        </Typography>
+        <Stack
+          sx={{
+            display: 'flex',
+            justifyContent: 'flex-end',
+            paddingRight: 1.5,
+          }}
+        >
+          <FormGroup>
+            <FormControlLabel
+              control={
+                <MaterialUISwitch
+                  onChange={handleChange}
+                  inputProps={{ 'aria-label': 'controlled' }}
+                  sx={{ m: 1 }}
+                  defaultChecked
+                />
+              }
+              label="MUI switch"
+            />
+          </FormGroup>
+          {currentUser.email && activeStep != 1 && (
+            <>
+              <ButtonGroup>
+                {location.pathname === '/stats' ? (
+                  <CustomButton
+                    variant="contained"
+                    onClick={() => history.push('/progress')}
+                  >
+                    Tracker
+                  </CustomButton>
+                ) : (
+                  <CustomButton
+                    variant="contained"
+                    onClick={() => history.push('/stats')}
+                  >
+                    Stats
+                  </CustomButton>
+                )}
+                <CustomButton
+                  onClick={handleClick}
+                  type="submit"
+                  variant="contained"
+                >
+                  Logout
+                </CustomButton>
+              </ButtonGroup>
+            </>
+          )}
+        </Stack>
       </Stack>
     </Box>
   );
