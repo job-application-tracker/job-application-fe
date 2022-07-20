@@ -8,6 +8,7 @@ import {
   getAchievementsByWeek,
   updateAchievements,
 } from '../services/achievements';
+import { celebrate } from '../utils/celebrate';
 import { calculatePercent } from '../utils/percent';
 
 function Sidebar() {
@@ -47,6 +48,11 @@ function Sidebar() {
       newObj[achType] = update;
       updateAchievements(year, weekNumber, newObj);
       setAchieved(newObj);
+      const goalType = achType.replace('Num', 'Goal');
+      console.log('goalType', currentUser[goalType]);
+      if (update >= currentUser[goalType]) {
+        celebrate();
+      }
     } catch (e) {
       console.log(e.message);
     }
