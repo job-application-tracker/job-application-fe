@@ -128,7 +128,11 @@ function Auth({ nextStep, signUp, setSignUp }) {
             </Grid>
             <Grid item>
               <Typography
-                sx={{ textDecoration: 'underline', color: 'secondary.main' }}
+                sx={{
+                  textDecoration: 'underline',
+                  color: 'secondary.main',
+                  cursor: 'pointer',
+                }}
                 onClick={() => setSignUp(!signUp)}
                 variant="body2"
               >

@@ -31,3 +31,21 @@ export async function updateJob({ id, status }, index) {
   const job = await updatedData.json();
   return job;
 }
+export async function createJob(formData) {
+  const requestUrl = `${url}/api/v1/trackers`;
+  // todo: change hardcoded index
+  const requestInfo = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    credentials: 'include',
+    mode: 'cors',
+    body: JSON.stringify({ ...formData, index: 0 }),
+  };
+  const newJob = await fetch(requestUrl, requestInfo);
+
+  if (!newJob.ok) {
+    throw new Error(`Error creating a job.`);
+  }
+  const job = await newJob.json();
+  return job;
+}

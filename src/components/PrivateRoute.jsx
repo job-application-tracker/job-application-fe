@@ -2,7 +2,9 @@ import { Redirect, Route } from 'react-router-dom';
 import { useUserContext } from '../context/userContext';
 
 export default function PrivateRoute({ children, ...rest }) {
-  const { currentUser, activeStep } = useUserContext();
+  const { currentUser, activeStep, loading } = useUserContext();
+
+  if (loading) return <p>Loading</p>;
   return (
     <Route
       {...rest}

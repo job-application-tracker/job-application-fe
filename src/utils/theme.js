@@ -1,18 +1,37 @@
 import { createTheme } from '@mui/material/styles';
+
 // TODO: set theme to correct colors.
 const theme = createTheme({
   palette: {
+    mode: 'light',
     primary: {
-      main: '#f4f4f9',
+      main: '#586F7C',
       light: '#b8dbd9',
-      dark: '#121212',
-    },
-    secondary: {
-      main: '#2f4550',
+      dark: '#2F4550',
     },
   },
-  zIndex: {
-    tooltip: 1800,
+  typography: {
+    fontFamily: "'Oswald', sans-serif",
+    h1: {
+      fontFamily: "'Fauna One', serif",
+      fontWeight: 400,
+      fontSize: '4rem',
+    },
+    h2: {
+      fontFamily: "'Josefin Sans', sans-serif",
+    },
+    h3: {
+      fontFamily: "'Josefin Sans', sans-serif",
+    },
+    h4: {
+      fontFamily: "'Josefin Sans', sans-serif",
+    },
+    h5: {
+      fontFamily: "'Josefin Sans', sans-serif",
+    },
+    h6: {
+      fontFamily: "'Josefin Sans', sans-serif",
+    },
   },
 });
 
