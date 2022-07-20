@@ -55,7 +55,6 @@ export default function Board() {
           id: end.id,
           list: newEndList,
         };
-        await updateJob(newJob.id, newJob);
         setStatus((prev) => {
           return {
             ...prev,
@@ -63,6 +62,7 @@ export default function Board() {
             [newEndCol.id]: newEndCol,
           };
         });
+        await updateJob(newJob.id, newJob);
         return null;
       }
     } catch (error) {
