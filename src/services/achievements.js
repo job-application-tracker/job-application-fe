@@ -9,7 +9,6 @@ export async function getAchievementsByWeek(year, week) {
       }
     );
     const achievementsData = await achievements.json();
-    console.log('achievementsData', achievementsData);
     return achievementsData;
   } catch (error) {
     console.log(error.message);
@@ -32,4 +31,38 @@ export async function updateAchievements(year, week, attrs) {
     throw new Error('Invalid');
   }
   return await update.json();
+}
+
+export async function fetchSumAchievements() {
+  try {
+    const weeks = await fetch(url + '/api/v1/achievements', {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      mode: 'cors',
+    });
+    const achievementsData = await weeks.json();
+    console.log('achievementsData', achievementsData);
+    return achievementsData;
+  } catch (error) {
+    console.log(error.message);
+    return null;
+  }
+}
+
+export async function fetchTotalAchievements() {
+  try {
+    const sums = await fetch(url + '/api/v1/achievements/sums', {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      mode: 'cors',
+    });
+    const totalsData = await sums.json();
+    console.log('totalsData', totalsData);
+    return totalsData;
+  } catch (error) {
+    console.log(error.message);
+    return null;
+  }
 }

@@ -2,6 +2,7 @@ import {
   Box,
   Button,
   Grid,
+  IconButton,
   InputLabel,
   MenuItem,
   Modal,
@@ -10,6 +11,7 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
+import DeleteSharpIcon from '@mui/icons-material/DeleteSharp';
 import React, { useState } from 'react';
 import useForm from '../hooks/useForm';
 import { CustomButton } from './styled/CustomButton';
@@ -38,9 +40,15 @@ export default function ModalForm({
   crudAction,
   stateAction,
   initialState,
+  editing,
+  deleteAction,
 }) {
-  const { handleChange, formState } = useForm(initialState);
+  const { handleChange, formState, clearForm } = useForm(initialState);
   const [error, setError] = useState('');
+  const handleDelete = async () => {
+    await deleteAction();
+    handleClose();
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -48,6 +56,7 @@ export default function ModalForm({
       setError('');
       const data = await crudAction(formState);
       stateAction(data);
+      clearForm();
       handleClose();
     } catch (error) {
       setError(error.message);
@@ -90,9 +99,6 @@ export default function ModalForm({
             value={formState.notes}
             onChange={handleChange}
           />
-          <InputLabel sx={{ paddingTop: '30px' }} id="status">
-            Status
-          </InputLabel>
           <Grid
             container
             sx={{
@@ -104,22 +110,31 @@ export default function ModalForm({
             }}
           >
             <Grid md={9} item>
-              <Select
-                sx={{ width: '100%', heigh: '45px' }}
-                id="status"
-                name="status"
-                label="Status"
-                defaultValue="Saved"
-                value={formState.status}
-                onChange={handleChange}
-              >
-                <MenuItem value="Saved">Saved</MenuItem>
-                <MenuItem value="Applied">Applied</MenuItem>
-                <MenuItem value="Interviewing">Interviewing</MenuItem>
-                <MenuItem value="Accepted">Accepted</MenuItem>
-                <MenuItem value="Ghosted">Ghosted</MenuItem>
-                <MenuItem value="Rejected">Rejected</MenuItem>
-              </Select>
+              {editing ? (
+                <DeleteSharpIcon onClick={handleDelete} />
+              ) : (
+                <>
+                  <InputLabel sx={{ paddingTop: '30px' }} id="status">
+                    Status
+                  </InputLabel>
+                  <Select
+                    sx={{ width: '100%', heigh: '45px' }}
+                    id="status"
+                    name="status"
+                    label="Status"
+                    // defaultValue="Saved"
+                    value={formState.status}
+                    onChange={handleChange}
+                  >
+                    <MenuItem value="Saved">Saved</MenuItem>
+                    <MenuItem value="Applied">Applied</MenuItem>
+                    <MenuItem value="Interviewing">Interviewing</MenuItem>
+                    <MenuItem value="Accepted">Accepted</MenuItem>
+                    <MenuItem value="Ghosted">Ghosted</MenuItem>
+                    <MenuItem value="Rejected">Rejected</MenuItem>
+                  </Select>
+                </>
+              )}
             </Grid>
             <Grid md="auto" item>
               <CustomButton

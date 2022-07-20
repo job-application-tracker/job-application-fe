@@ -24,18 +24,17 @@ export default function Board() {
     try {
       setError('');
       if (start === end) {
-        const newList = list.filter((item, i) => i !== source.index);
+        const newList = start.list.filter((item, i) => i !== source.index);
         newList.splice(destination.index, 0, start.list[source.index]);
         const newCol = {
           id: start.id,
           list: newList,
         };
-        // await updateJob(start.list[source.index], destination.index);
         setStatus((state) => ({ ...state, [newCol.id]: newCol }));
         return null;
       } else {
+        //filter out the item
         const newStartList = start.list.filter((item, i) => i !== source.index);
-
         const newStartCol = {
           id: start.id,
           list: newStartList,
@@ -43,32 +42,31 @@ export default function Board() {
 
         // Make a new end list array
         const newEndList = end.list;
+        const newJob = {
+          ...start.list[source.index],
+          status: end.id,
+        };
 
         // Insert the item into the end list
-        newEndList.splice(destination.index, 0, start.list[source.index]);
+        newEndList.splice(destination.index, 0, newJob);
 
         // Create a new end column
         const newEndCol = {
           id: end.id,
           list: newEndList,
         };
-
-        // Update the state
-        // await updateJob(
-        //   { ...start.list[source.index], status: end.id },
-        //   destination.index
-        // );
-        setStatus((prev) => ({
-          ...prev,
-          [newStartCol.id]: newStartCol,
-          [newEndCol.id]: newEndCol,
-        }));
-
+        setStatus((prev) => {
+          return {
+            ...prev,
+            [newStartCol.id]: newStartCol,
+            [newEndCol.id]: newEndCol,
+          };
+        });
+        await updateJob(newJob.id, newJob);
         return null;
       }
     } catch (error) {
       setError(error.message);
-      console.error(error);
       return null;
     }
   };
@@ -89,7 +87,9 @@ export default function Board() {
           }}
         >
           <Grid item md={3} minHeight="100vh">
-            <Typography variant="h4">Saved</Typography>
+            <Typography textAlign="center" variant="h4">
+              Saved
+            </Typography>
             <Box
               sx={{
                 overflowY: 'auto',
@@ -104,7 +104,9 @@ export default function Board() {
             </Box>
           </Grid>
           <Grid item md={3} minHeight="100vh">
-            <Typography variant="h4">Applied</Typography>
+            <Typography textAlign="center" variant="h4">
+              Applied
+            </Typography>
             <Box
               sx={{
                 overflowY: 'auto',
@@ -119,7 +121,9 @@ export default function Board() {
             </Box>
           </Grid>
           <Grid item md={3} minHeight="100vh">
-            <Typography variant="h4">Interviewing</Typography>
+            <Typography textAlign="center" variant="h4">
+              Interviewing
+            </Typography>
             <Box
               sx={{
                 minHeight: '100vh',
@@ -145,7 +149,9 @@ export default function Board() {
               sx={{ marginRight: '10px' }}
             >
               <Grid item md={4}>
-                <Typography variant="h4">Accepted</Typography>
+                <Typography textAlign="center" variant="h4">
+                  Accepted
+                </Typography>
                 <Box
                   sx={{
                     height: '33.33%',
@@ -160,7 +166,9 @@ export default function Board() {
                 </Box>
               </Grid>
               <Grid item md={4}>
-                <Typography variant="h4">Ghosted</Typography>
+                <Typography textAlign="center" variant="h4">
+                  Ghosted
+                </Typography>
                 <Box
                   sx={{
                     maxHeight: '33.33%',
@@ -175,7 +183,9 @@ export default function Board() {
                 </Box>
               </Grid>
               <Grid item md={4}>
-                <Typography variant="h4">Rejected</Typography>
+                <Typography textAlign="center" variant="h4">
+                  Rejected
+                </Typography>
                 <Box
                   sx={{
                     height: '33.33%',
