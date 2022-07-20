@@ -2,18 +2,19 @@ import { Button, ButtonGroup, Container, Typography, Box } from '@mui/material';
 import ProgressBar from '@ramonak/react-progress-bar';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
+import { useMode } from '../context/ModeContext';
 import { useUserContext } from '../context/userContext';
 import {
   getAchievementsByWeek,
   updateAchievements,
 } from '../services/achievements';
 import { calculatePercent } from '../utils/percent';
-import theme from '../utils/theme';
 
 function Sidebar() {
   const { currentUser } = useUserContext();
   const [achieved, setAchieved] = useState({});
   const [loadingGoals, setLoadingGoals] = useState(true);
+  const { theme } = useMode();
 
   //calculating the current week
   const date = new Date();
