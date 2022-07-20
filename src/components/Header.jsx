@@ -9,13 +9,15 @@ import {
 import { Box } from '@mui/system';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import { useMode } from '../context/ModeContext';
 import { useUserContext } from '../context/userContext';
 import { CustomButton } from './styled/CustomButton';
 import { MaterialUISwitch } from './styled/ToggleDarkMode';
 
-function Header({ setLightMode, lightMode }) {
+function Header() {
   const history = useHistory();
   const { currentUser, logOut } = useUserContext();
+  const { toggleMode } = useMode();
 
   const handleClick = async () => {
     await logOut();
@@ -35,7 +37,7 @@ function Header({ setLightMode, lightMode }) {
           <FormControlLabel
             control={
               <MaterialUISwitch
-                onChange={() => setLightMode(!lightMode)}
+                onChange={toggleMode}
                 inputProps={{ 'aria-label': 'controlled' }}
                 sx={{ m: 1 }}
                 defaultChecked

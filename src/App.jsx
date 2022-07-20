@@ -7,49 +7,17 @@ import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 import { useUserContext } from './context/userContext';
 import PrivateRoute from './components/PrivateRoute';
 import { useState } from 'react';
+import { useMode } from './context/ModeContext';
 
 export default function App() {
   const { currentUser, activeStep } = useUserContext();
-  const [lightMode, setLightMode] = useState(true);
-  const theme = createTheme({
-    palette: {
-      mode: lightMode ? 'light' : 'dark',
-      primary: {
-        main: '#586F7C',
-        light: '#b8dbd9',
-        dark: '#2F4550',
-      },
-    },
-    typography: {
-      fontFamily: "'Oswald', sans-serif",
-      h1: {
-        fontFamily: "'Fauna One', serif",
-        fontWeight: 400,
-        fontSize: '4rem',
-      },
-      h2: {
-        fontFamily: "'Josefin Sans', sans-serif",
-      },
-      h3: {
-        fontFamily: "'Josefin Sans', sans-serif",
-      },
-      h4: {
-        fontFamily: "'Josefin Sans', sans-serif",
-      },
-      h5: {
-        fontFamily: "'Josefin Sans', sans-serif",
-      },
-      h6: {
-        fontFamily: "'Josefin Sans', sans-serif",
-      },
-    },
-  });
+  const { theme } = useMode();
 
   return (
     <ThemeProvider theme={theme}>
       <Box>
         <CssBaseline />
-        <Header setLightMode={setLightMode} lightMode={lightMode} />
+        <Header />
         <Switch>
           <PrivateRoute path={'/progress'}>
             <Progress />
