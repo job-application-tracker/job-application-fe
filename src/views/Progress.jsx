@@ -19,8 +19,8 @@ export default function Progress() {
       const data = await getCurrentUser();
     };
 
-  //   setUpdatedUser();
-  // }, []);
+    setUpdatedUser();
+  }, []);
 
   const jobInfo = {
     position: '',
