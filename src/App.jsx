@@ -9,6 +9,7 @@ import PrivateRoute from './components/PrivateRoute';
 import Stats from './views/Stats';
 import { useState } from 'react';
 import { useMode } from './context/ModeContext';
+import AboutUs from './views/AboutUs';
 
 export default function App() {
   const { currentUser, activeStep } = useUserContext();
@@ -26,6 +27,9 @@ export default function App() {
           <PrivateRoute path={'/stats'}>
             <Stats />
           </PrivateRoute>
+          <Route path={'/about-us'}>
+            <AboutUs />
+          </Route>
           <Route exact path={'/'}>
             {!currentUser.email || activeStep === 1 ? (
               <Landing />
