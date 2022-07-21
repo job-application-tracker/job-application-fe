@@ -6,10 +6,16 @@ import Sidebar from '../components/Sidebar';
 
 export default function Stats() {
   return (
-    <Grid sx={{ padding: 1.5 }} container spacing={2}>
-      <Grid item md={2}>
-        <Sidebar />
-      </Grid>
+    <Grid
+      sx={{
+        padding: 1.5,
+        display: 'flex',
+        justifyContent: 'space-evenly',
+        alignItems: 'center',
+      }}
+      container
+      spacing={2}
+    >
       <Grid
         item
         md={7}
