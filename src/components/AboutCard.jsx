@@ -1,13 +1,14 @@
 import React from 'react';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import { ButtonGroup, Card, Typography } from '@mui/material';
+import { Avatar, ButtonGroup, Card, Typography } from '@mui/material';
 
 export default function AboutCard({
   name,
   linkedinLink,
   githubLink,
   description,
+  image,
 }) {
   return (
     <Card
@@ -22,6 +23,7 @@ export default function AboutCard({
       }}
     >
       <Typography variant="h4">{name}</Typography>
+      <Avatar sx={{ width: '100px', height: '100px' }} src={image} />
       <ButtonGroup>
         <LinkedInIcon onClick={() => window.open({ linkedinLink })} />
         <GitHubIcon onClick={() => window.open({ githubLink })} />
