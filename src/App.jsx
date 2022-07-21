@@ -10,6 +10,7 @@ import Stats from './views/Stats';
 import { useState } from 'react';
 import { useMode } from './context/ModeContext';
 import AboutUs from './views/AboutUs';
+import Footer from './components/Footer';
 
 export default function App() {
   const { currentUser, activeStep } = useUserContext();
@@ -40,6 +41,7 @@ export default function App() {
             {/* <Landing /> */}
           </Route>
         </Switch>
+        <Footer />
       </Box>
     </ThemeProvider>
   );
