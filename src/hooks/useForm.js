@@ -12,8 +12,8 @@ export default function useForm(inputs = {}) {
     });
   };
 
-  const clearForm = () => {
-    setFormState(inputs);
+  const clearForm = (updatedInfo) => {
+    setFormState(updatedInfo);
   };
   return { formState, handleChange, clearForm };
 }
