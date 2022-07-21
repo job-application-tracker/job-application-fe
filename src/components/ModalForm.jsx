@@ -70,8 +70,9 @@ export default function ModalForm({
         width={600}
         height={800}
         sx={{
-          backgroundColor: 'white',
-          color: 'black',
+          // backgroundColor: ,
+          backgroundColor: 'common.background',
+          color: 'common.color',
           borderRadius: '10px',
         }}
       >
@@ -118,7 +119,7 @@ export default function ModalForm({
                     Status
                   </InputLabel>
                   <Select
-                    sx={{ width: '100%', heigh: '45px' }}
+                    sx={{ width: '100%', height: '45px' }}
                     id="status"
                     name="status"
                     label="Status"
