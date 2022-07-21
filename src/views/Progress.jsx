@@ -1,7 +1,6 @@
-import { Box, Button } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import { Box, Grid } from '@mui/material';
+import { useEffect, useState } from 'react';
 import ModalForm from '../components/ModalForm';
-import { Grid } from '@mui/material';
 import Sidebar from '../components/Sidebar';
 import { useUserContext } from '../context/userContext';
 import Board from './Board/Board';
@@ -14,11 +13,11 @@ export default function Progress() {
   const { setStatus } = useJobContext();
   const [open, setOpen] = useState(false);
   const handleClose = () => setOpen(false);
+
   useEffect(() => {
     const setUpdatedUser = async () => {
-      const data = await getCurrentUser();
+      await getCurrentUser();
     };
-
     setUpdatedUser();
   }, []);
 

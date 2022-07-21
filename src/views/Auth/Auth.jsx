@@ -10,7 +10,6 @@ import {
   TextField,
   Typography,
   Link as MuiLink,
-  ListItemSecondaryAction,
 } from '@mui/material';
 import { useHistory } from 'react-router-dom';
 import useForm from '../../hooks/useForm';
@@ -21,32 +20,12 @@ import { useUserContext } from '../../context/userContext';
 function Auth({ nextStep, signUp, setSignUp }) {
   const [error, setError] = useState('');
   const history = useHistory();
-  const { formState, handleChange, clearForm } = useForm({
+  const { formState, handleChange } = useForm({
     email: '',
     password: '',
   });
-  const { acquireUser, currentUser } = useUserContext();
+  const { acquireUser } = useUserContext();
   const authType = signUp ? 'Sign Up' : 'Sign In';
-  function Copyright(props) {
-    return (
-      <Typography
-        variant="body2"
-        color="text.secondary"
-        align="center"
-        {...props}
-      >
-        {'Copyright © '}
-        <MuiLink
-          color="inherit"
-          href="https://github.com/job-application-tracker"
-        >
-          job.find()
-        </MuiLink>{' '}
-        {new Date().getFullYear()}
-        {'.'}
-      </Typography>
-    );
-  }
 
   const handleSubmit = async (e) => {
     try {

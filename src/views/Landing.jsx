@@ -1,5 +1,5 @@
 import { Container } from '@mui/material';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Auth from '../views/Auth/Auth';
 import Step from '../components/Step';
 

@@ -1,5 +1,4 @@
 import { Card, Typography } from '@mui/material';
-import React from 'react';
 
 export default function SumCard({ type, value }) {
   return (

@@ -1,5 +1,4 @@
 import { Box, Grid, Typography } from '@mui/material';
-import React from 'react';
 import AboutCard from '../components/AboutCard';
 import aidanImg from '../../public/Photos/Aidan.jpeg';
 import maryImg from '../../public/Photos/Mary.jpg';
