@@ -1,5 +1,4 @@
 import { Card, Typography } from '@mui/material';
-import React from 'react';
 import { useState } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 import { useJobContext } from '../../context/JobContext';

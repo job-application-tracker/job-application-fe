@@ -1,8 +1,7 @@
-import { Box, Card, Stack, Typography } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 import React from 'react';
 import { Droppable } from 'react-beautiful-dnd';
 import Job from '../Job/Job';
-import styles from './column.css';
 
 export default function Column({ id, list }) {
   return (

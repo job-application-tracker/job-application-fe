@@ -1,8 +1,7 @@
 import { Box, Grid, Typography } from '@mui/material';
-import React from 'react';
 import AboutCard from '../components/AboutCard';
 import aidanImg from '../../public/Photos/Aidan.jpeg';
-import maryImg from '../../public/Photos/Mary.jpg';
+import maryImg from '../../public/Photos/Mary.jpeg';
 import bradleyImg from '../../public/Photos/Bradley.jpeg';
 import denverImg from '../../public/Photos/Denver.jpeg';
 
@@ -19,6 +18,9 @@ export default function AboutUs() {
       >
         <Typography sx={{ padding: 1.5 }} variant="h3">
           Meet the Developers!
+        </Typography>
+        <Typography sx={{ padding: 1.5 }} variant="p">
+          Please reach out and add us on LinkedIn!
         </Typography>
         <Grid sx={{ padding: 1.5 }} container spacing={2}>
           <Grid item md={3}>
@@ -51,7 +53,9 @@ export default function AboutUs() {
           <Grid item md={3}>
             <AboutCard
               name={'Bradley Bird'}
-              description={'bla'}
+              description={
+                'Bradley Bird is a full stack software engineer, he enjoys problem solving, and loves to code. '
+              }
               linkedinLink={'https://www.linkedin.com/in/bradley-bird/'}
               githubLink={'https://github.com/bradley-bird'}
               image={bradleyImg}

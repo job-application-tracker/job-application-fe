@@ -1,4 +1,4 @@
-import { Grid, Typography } from '@mui/material';
+import { Grid } from '@mui/material';
 import React from 'react';
 import DisplayTotals from '../components/DisplayTotals';
 import Graph from '../components/Graph';

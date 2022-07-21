@@ -1,6 +1,6 @@
-import { Button, ButtonGroup, Container, Typography, Box } from '@mui/material';
+import { Button, ButtonGroup, Typography, Box } from '@mui/material';
 import ProgressBar from '@ramonak/react-progress-bar';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useState } from 'react';
 import { useMode } from '../context/ModeContext';
 import { useUserContext } from '../context/userContext';
@@ -81,7 +81,6 @@ function Sidebar() {
         <ProgressBar
           completed={calculatePercent(achieved.appNum, currentUser.appGoal)}
           bgColor={theme.palette.primary.light}
-          // bgColor={'primary.light'}
           labelAlignment="left"
           labelColor="#000000"
         />
