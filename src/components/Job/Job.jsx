@@ -21,7 +21,6 @@ export default function Job({
   const updateStateFromModal = (newJob) => {
     setStatus((prev) => {
       const newState = { ...prev };
-      .log(newJob);
       const { status } = newJob;
       newState[status].list = [
         ...prev[status].list.filter((j) => j.id !== newJob.id),
