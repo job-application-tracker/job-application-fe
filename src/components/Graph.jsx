@@ -7,7 +7,7 @@ import { fetchSumAchievements } from '../services/achievements';
 export default function Graph() {
   const [data, setData] = useState([]);
   const { currentUser } = useUserContext();
-  console.log('currentUser', currentUser.id);
+  
   useEffect(() => {
     const getData = async () => {
       const data = await fetchSumAchievements();

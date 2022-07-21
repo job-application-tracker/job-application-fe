@@ -47,7 +47,11 @@ export default function Progress() {
           padding: 1.5,
         }}
       >
-        <CustomButton variant="contained" onClick={() => setOpen(true)}>
+        <CustomButton
+          sx={{ height: '50px' }}
+          variant="contained"
+          onClick={() => setOpen(true)}
+        >
           Create
         </CustomButton>
       </Box>
@@ -58,7 +62,7 @@ export default function Progress() {
         stateAction={updateStateFromModal}
         initialState={jobInfo}
       />
-      <Grid sx={{ padding: 1.5 }} container spacing={2}>
+      <Grid sx={{ padding: 1.5, marginBottom: '80px' }} container spacing={2}>
         <Grid item md={2}>
           <Sidebar />
         </Grid>

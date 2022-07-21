@@ -49,7 +49,6 @@ function Sidebar() {
       updateAchievements(year, weekNumber, newObj);
       setAchieved(newObj);
       const goalType = achType.replace('Num', 'Goal');
-      console.log('goalType', currentUser[goalType]);
       if (update >= currentUser[goalType] && value > 0) {
         celebrate();
       }

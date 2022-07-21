@@ -42,7 +42,6 @@ export async function fetchSumAchievements() {
       mode: 'cors',
     });
     const achievementsData = await weeks.json();
-    console.log('achievementsData', achievementsData);
     return achievementsData;
   } catch (error) {
     console.log(error.message);
@@ -59,7 +58,6 @@ export async function fetchTotalAchievements() {
       mode: 'cors',
     });
     const totalsData = await sums.json();
-    console.log('totalsData', totalsData);
     return totalsData;
   } catch (error) {
     console.log(error.message);

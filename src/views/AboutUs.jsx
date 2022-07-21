@@ -10,7 +10,12 @@ export default function AboutUs() {
   return (
     <>
       <Box
-        sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+        sx={{
+          height: '81vh',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
       >
         <Typography sx={{ padding: 1.5 }} variant="h3">
           Meet the Developers!

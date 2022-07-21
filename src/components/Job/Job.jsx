@@ -13,24 +13,20 @@ export default function Job({
   const { setStatus } = useJobContext();
   const [editing, setEditing] = useState(false);
 
-  //TODO: SWITCH INDEX FROM HARDCODED
-  //TODO: Rename this variable
   const updateJobDetails = async (formState) => {
     const updatedJob = await updateJob(id, formState);
     return updatedJob;
   };
 
-  //todo: find why form state is occasionally not updating on the front end
-  // (filling the form properly)
   const updateStateFromModal = (newJob) => {
     setStatus((prev) => {
       const newState = { ...prev };
-      console.log(newJob);
       const { status } = newJob;
       newState[status].list = [
         ...prev[status].list.filter((j) => j.id !== newJob.id),
         newJob,
       ];
+      console.log(newState);
       return newState;
     });
   };

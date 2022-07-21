@@ -16,7 +16,7 @@ export default function DisplayTotals() {
       console.log(error.message);
     }
   }, []);
-  console.log('totals', totals);
+
   return (
     <Grid
       container
