@@ -61,14 +61,15 @@ function Header() {
           {currentUser.email && activeStep != 1 && (
             <>
               <ButtonGroup>
-                {location.pathname === '/stats' ? (
+                {location.pathname !== '/progress' && (
                   <CustomButton
                     variant="contained"
                     onClick={() => history.push('/progress')}
                   >
                     Tracker
                   </CustomButton>
-                ) : (
+                )}
+                {location.pathname !== '/stats' && (
                   <CustomButton
                     variant="contained"
                     onClick={() => history.push('/stats')}
