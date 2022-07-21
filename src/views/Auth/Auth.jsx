@@ -123,12 +123,12 @@ function Auth({ nextStep, signUp, setSignUp }) {
           >
             {authType}
           </Button>
-          <Grid container alignItems="center" justifyContent="center">
-            <Grid item>
-              <Typography color={'error'} variant="subtitle2">
-                {error}
-              </Typography>
-            </Grid>
+          <Grid
+            container
+            alignItems="center"
+            justifyContent="center"
+            flexDirection="column"
+          >
             <Grid item>
               <Typography
                 sx={{
@@ -144,10 +144,14 @@ function Auth({ nextStep, signUp, setSignUp }) {
                   : "Don't have an account? Sign Up"}
               </Typography>
             </Grid>
+            <Grid item>
+              <Typography color={'error'} variant="subtitle2">
+                {error}
+              </Typography>
+            </Grid>
           </Grid>
         </Box>
       </Box>
-      <Copyright sx={{ mt: 8, mb: 4 }} />
     </Container>
   );
 }
