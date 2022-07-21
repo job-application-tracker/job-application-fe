@@ -36,8 +36,11 @@ function Auth({ nextStep, signUp, setSignUp }) {
         {...props}
       >
         {'Copyright © '}
-        <MuiLink color="inherit" href="https://mui.com/">
-          find(job)
+        <MuiLink
+          color="inherit"
+          href="https://github.com/job-application-tracker"
+        >
+          job.find()
         </MuiLink>{' '}
         {new Date().getFullYear()}
         {'.'}
