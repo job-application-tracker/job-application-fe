@@ -30,7 +30,7 @@ export default function Graph() {
         width={730}
         height={250}
         data={data}
-        margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+        margin={{ top: 5, right: 90, left: 20, bottom: 25 }}
       >
         <CartesianGrid strokeDasharray="3 3" />
         <Line
@@ -57,11 +57,16 @@ export default function Graph() {
           stroke="#64fc"
           name="linkedin connections"
         />
-        {/* <Line type="monotone" dataKey="codeNum" stroke="#15ca" /> */}
-        <XAxis dataKey="week" label="Week of the Year" margin={{ top: 25 }} />
+        <XAxis
+          dataKey="week"
+          label={{
+            value: 'Week of the Year',
+            position: 'bottom',
+            stroke: '#586F7C',
+          }}
+        />
         <YAxis />
-        <Legend />
-        {/* <Tooltip /> */}
+        <Legend verticalAlign="top" />
       </LineChart>
     </Container>
   );

@@ -60,7 +60,6 @@ export default function ModalForm({
       handleClose();
     } catch (error) {
       setError(error.message);
-      console.log(error);
     }
   };
   return (

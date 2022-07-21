@@ -25,7 +25,6 @@ export default function Job({
         ...prev[status].list.filter((j) => j.id !== newJob.id),
         newJob,
       ];
-      console.log(newState);
       return newState;
     });
   };

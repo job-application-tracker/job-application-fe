@@ -14,19 +14,28 @@ export default function AboutCard({
     <Card
       sx={{
         overflowY: 'auto',
-        boxShadow: 1,
+        boxShadow: 5,
+        background: 'common.background',
         borderRadius: 2,
         p: 2,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+        width: '400px',
+        height: '400px',
       }}
     >
       <Typography variant="h4">{name}</Typography>
-      <Avatar sx={{ width: '100px', height: '100px' }} src={image} />
+      <Avatar sx={{ width: '200px', height: '200px' }} src={image} />
       <ButtonGroup>
-        <LinkedInIcon onClick={() => window.open({ linkedinLink })} />
-        <GitHubIcon onClick={() => window.open({ githubLink })} />
+        <LinkedInIcon
+          sx={{ fontSize: '50px' }}
+          onClick={() => window.open(linkedinLink)}
+        />
+        <GitHubIcon
+          sx={{ fontSize: '50px' }}
+          onClick={() => window.open(githubLink)}
+        />
       </ButtonGroup>
       <Typography variant="p">{description}</Typography>
     </Card>

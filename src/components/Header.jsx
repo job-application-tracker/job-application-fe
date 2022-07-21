@@ -35,7 +35,11 @@ function Header() {
     >
       <CssBaseline />
       <Stack direction="row" spacing={2} justifyContent="space-between">
-        <Typography variant="h1" sx={{ padding: 1.5 }}>
+        <Typography
+          variant="h1"
+          sx={{ padding: 1.5, cursor: 'pointer' }}
+          onClick={() => history.push(currentUser.email ? '/progress' : '/')}
+        >
           job.find()
         </Typography>
         <Stack

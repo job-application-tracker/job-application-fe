@@ -54,7 +54,6 @@ export default function GoalsForm() {
       nextStep();
       history.push('/progress');
     } catch (error) {
-      console.log(error);
       setError(error.message);
     }
   };
