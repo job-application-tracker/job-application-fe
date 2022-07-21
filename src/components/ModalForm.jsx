@@ -56,7 +56,7 @@ export default function ModalForm({
         throw new Error('Please enter a position and a company.');
       const data = await crudAction(formState);
       stateAction(data);
-      clearForm(data);
+      clearForm(data, editing);
       handleClose();
     } catch (error) {
       setError(error.message);
