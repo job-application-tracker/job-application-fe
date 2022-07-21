@@ -54,9 +54,11 @@ export default function ModalForm({
     e.preventDefault();
     try {
       setError('');
+      if (formState.position === '' || formState.company === '')
+        throw new Error('Please enter a position and a company.');
       const data = await crudAction(formState);
       stateAction(data);
-      clearForm();
+      clearForm(data);
       handleClose();
     } catch (error) {
       setError(error.message);
@@ -112,7 +114,7 @@ export default function ModalForm({
           >
             <Grid md={9} item>
               {editing ? (
-                <DeleteSharpIcon onClick={handleDelete} />
+                <DeleteSharpIcon onClick={() => handleDelete()} />
               ) : (
                 <>
                   <InputLabel sx={{ paddingTop: '30px' }} id="status">

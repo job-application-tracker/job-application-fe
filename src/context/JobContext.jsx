@@ -21,17 +21,15 @@ export const JobProvider = ({ children }) => {
 
   useEffect(() => {
     const getJobs = async () => {
-      //fetch job data
       const jobData = await fetchJobs();
       const formatted = sortJobs(jobData);
       setStatus(formatted);
+
       setLoadingStatus(false);
     };
-    //only getJobs if user is logged in
     email && getJobs();
   }, [email]);
   const value = { status, loadingStatus, setStatus };
-
   return <JobContext.Provider value={value}> {children} </JobContext.Provider>;
 };
 
