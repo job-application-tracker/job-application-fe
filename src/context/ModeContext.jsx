@@ -13,10 +13,17 @@ const ModeProvider = ({ children }) => {
   const theme = createTheme({
     palette: {
       mode: lightMode ? 'light' : 'dark',
+      common: {
+        background: lightMode ? '#fff' : '#1E1E1E',
+        color: lightMode ? '#1E1E1E' : '#EAEAEA',
+        // background: lightMode ? '#fff' : '#000',
+        // color: lightMode ? '#000' : '#fff',
+      },
       primary: {
         main: '#586F7C',
         light: '#b8dbd9',
         dark: '#2F4550',
+        card: lightMode ? '#b8dbd9' : '#2F4550',
       },
     },
     typography: {
@@ -42,6 +49,10 @@ const ModeProvider = ({ children }) => {
         fontFamily: "'Josefin Sans', sans-serif",
       },
     },
+    // shadows: [
+    //   'none',
+    //   '0px 3px 5px -1px rgba(0,0,0,0.2), 0px 5px 8px 0px rgba(0,0,0,0,0.14), 0px 1px 14px 0px rgba(0,0,0,0.12)',
+    // ],
   });
 
   return (

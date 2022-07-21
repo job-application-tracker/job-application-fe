@@ -50,7 +50,7 @@ function Sidebar() {
       setAchieved(newObj);
       const goalType = achType.replace('Num', 'Goal');
       console.log('goalType', currentUser[goalType]);
-      if (update >= currentUser[goalType]) {
+      if (update >= currentUser[goalType] && value > 0) {
         celebrate();
       }
     } catch (e) {
@@ -67,8 +67,8 @@ function Sidebar() {
       </Typography>
       <Box
         sx={{
-          bgcolor: 'background.paper',
-          boxShadow: 1,
+          bgcolor: 'common.background',
+          boxShadow: 5,
           borderRadius: 2,
           p: 2,
           maxWidth: '100%',
@@ -82,6 +82,7 @@ function Sidebar() {
         <ProgressBar
           completed={calculatePercent(achieved.appNum, currentUser.appGoal)}
           bgColor={theme.palette.primary.light}
+          // bgColor={'primary.light'}
           labelAlignment="left"
           labelColor="#000000"
         />

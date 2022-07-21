@@ -27,16 +27,23 @@ function Header() {
   };
 
   return (
-    <Box sx={{ height: '100px', borderBottom: '1px black solid' }}>
+    <Box
+      sx={{
+        height: '100px',
+        borderBottom: '1px black solid',
+        bgcolor: 'common.background',
+      }}
+    >
       <CssBaseline />
       <Stack direction="row" spacing={2} justifyContent="space-between">
         <Typography variant="h1" sx={{ padding: 1.5 }}>
-          find.job()
+          job.find()
         </Typography>
         <Stack
           sx={{
             display: 'flex',
             justifyContent: 'flex-end',
+            alignItems: 'flex-end',
             paddingRight: 1.5,
           }}
         >
@@ -47,10 +54,8 @@ function Header() {
                   onChange={toggleMode}
                   inputProps={{ 'aria-label': 'controlled' }}
                   sx={{ m: 1 }}
-                  defaultChecked
                 />
               }
-              label="MUI switch"
             />
           </FormGroup>
           {currentUser.email && activeStep != 1 && (
