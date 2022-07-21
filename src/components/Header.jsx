@@ -8,7 +8,6 @@ import {
 } from '@mui/material';
 
 import { Box } from '@mui/system';
-import React from 'react';
 import { useMode } from '../context/ModeContext';
 import { useHistory, useLocation } from 'react-router-dom';
 import { useUserContext } from '../context/userContext';

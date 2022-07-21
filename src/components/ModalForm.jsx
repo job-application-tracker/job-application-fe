@@ -1,8 +1,6 @@
 import {
   Box,
-  Button,
   Grid,
-  IconButton,
   InputLabel,
   MenuItem,
   Modal,
@@ -72,7 +70,6 @@ export default function ModalForm({
         width={600}
         height={800}
         sx={{
-          // backgroundColor: ,
           backgroundColor: 'common.background',
           color: 'common.color',
           borderRadius: '10px',
@@ -106,7 +103,6 @@ export default function ModalForm({
             container
             sx={{
               height: '300px',
-              // backgroundColor: 'primary.dark',
               justifyContent: 'flex-end',
               alignItems: 'stretch',
               flexDirection: 'column',
@@ -125,7 +121,6 @@ export default function ModalForm({
                     id="status"
                     name="status"
                     label="Status"
-                    // defaultValue="Saved"
                     value={formState.status}
                     onChange={handleChange}
                   >

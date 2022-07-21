@@ -14,8 +14,6 @@ import {
 import React from 'react';
 import FeedIcon from '@mui/icons-material/Feed';
 import CodeRoundedIcon from '@mui/icons-material/CodeRounded';
-//keyboard icon for possible variant
-// import KeyboardRoundedIcon from '@mui/icons-material/KeyboardRounded';
 import GroupsRoundedIcon from '@mui/icons-material/GroupsRounded';
 import ContactPhoneRoundedIcon from '@mui/icons-material/ContactPhoneRounded';
 import HandshakeIcon from '@mui/icons-material/Handshake';
@@ -36,8 +34,6 @@ export default function GoalsForm() {
   });
   const [error, setError] = useState('');
   const history = useHistory();
-
-  //TODO: autofill values from user table response, css, accessibility
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -80,7 +76,6 @@ export default function GoalsForm() {
                 label="applications goal"
                 name="appGoal"
                 inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
-                /* TODO: add accessibility arrows, labels, etc */
               />
             </Box>
           </ListItem>
@@ -100,7 +95,6 @@ export default function GoalsForm() {
                 label="networking goal"
                 name="networkGoal"
                 inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
-                /* TODO: add accessibility arrows, labels, etc */
               />
             </Box>
           </ListItem>
@@ -120,7 +114,6 @@ export default function GoalsForm() {
                 label="meetup goal"
                 name="meetupGoal"
                 inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
-                /* TODO: add accessibility arrows, labels, etc */
               />
             </Box>
           </ListItem>
@@ -140,7 +133,6 @@ export default function GoalsForm() {
                 label="linkedin connections goal"
                 name="linkedinGoal"
                 inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
-                /* TODO: add accessibility arrows, labels, etc */
               />
             </Box>
           </ListItem>
@@ -148,7 +140,6 @@ export default function GoalsForm() {
           <ListItem alignItems="flex-start">
             <ListItemAvatar>
               <CodeRoundedIcon />
-              {/* <KeyboardRoundedIcon/> */}
             </ListItemAvatar>
             <Box>
               <ListItemText primary="How many hours do you plan to work on code?" />
@@ -161,7 +152,6 @@ export default function GoalsForm() {
                 label="coding hours goal"
                 name="codeGoal"
                 inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
-                /* TODO: add accessibility arrows, labels, etc */
               />
             </Box>
           </ListItem>

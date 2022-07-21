@@ -1,13 +1,11 @@
-import { Container, Tooltip, Typography } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import { Container, Typography } from '@mui/material';
+import { useEffect, useState } from 'react';
 import { CartesianGrid, Legend, Line, LineChart, XAxis, YAxis } from 'recharts';
-import { useUserContext } from '../context/userContext';
 import { fetchSumAchievements } from '../services/achievements';
 
 export default function Graph() {
   const [data, setData] = useState([]);
-  const { currentUser } = useUserContext();
-  
+
   useEffect(() => {
     const getData = async () => {
       const data = await fetchSumAchievements();

@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { useJobContext } from '../../context/JobContext';
 import Column from '../../components/Column/Column';
-import { Box, CssBaseline, Grid, Typography } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { updateJob } from '../../services/jobs';
-import { Container } from '@mui/system';
 
 export default function Board() {
   const [error, setError] = useState('');
@@ -74,7 +73,6 @@ export default function Board() {
   if (loadingStatus) return <div>loader</div>;
   return (
     <>
-      {/* TODO: replace with toast notif */}
       {error && <p>{error}</p>}
       <DragDropContext onDragEnd={onDragEnd}>
         <Grid
