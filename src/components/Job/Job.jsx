@@ -55,7 +55,16 @@ export default function Job({
             {...provided.dragHandleProps}
             onDoubleClick={() => setEditing(true)}
           >
-            {position}
+            <Typography
+              sx={{ fontSize: 14 }}
+              color="text.secondary"
+              gutterBottom
+            >
+              {company}
+            </Typography>
+            <Typography variant="h5" component="div">
+              {position}
+            </Typography>
           </Card>
           <ModalForm
             open={editing}
