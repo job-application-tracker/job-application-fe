@@ -45,6 +45,11 @@ export default function GoalsForm() {
         linkedinGoal: formState.linkedinGoal,
         codeGoal: formState.codeGoal,
       };
+      for (let key in goals) {
+        if (goals[key] < 1) {
+          throw new Error('Values must be greater than 0.');
+        }
+      }
       await userGoalsUpdate(currentUser.id, goals);
       nextStep();
       history.push('/progress');
@@ -75,7 +80,10 @@ export default function GoalsForm() {
                 id="appGoal"
                 label="applications goal"
                 name="appGoal"
-                inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
+                inputProps={{
+                  inputMode: 'numeric',
+                  pattern: '[0-9]*',
+                }}
               />
             </Box>
           </ListItem>
@@ -171,6 +179,11 @@ export default function GoalsForm() {
         >
           Save changes
         </Button>
+        {error && (
+          <Typography variant="h6" color="error" textAlign={'center'}>
+            {error}
+          </Typography>
+        )}
       </Box>
     </Container>
   );

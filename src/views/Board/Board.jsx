@@ -92,8 +92,8 @@ export default function Board() {
               sx={{
                 overflowY: 'auto',
                 minHeight: '100vh',
-                bgcolor: 'background.paper',
-                boxShadow: 1,
+                bgcolor: 'common.background',
+                boxShadow: 5,
                 borderRadius: 2,
                 p: 2,
               }}
@@ -109,8 +109,8 @@ export default function Board() {
               sx={{
                 overflowY: 'auto',
                 minHeight: '100vh',
-                bgcolor: 'background.paper',
-                boxShadow: 1,
+                bgcolor: 'common.background',
+                boxShadow: 5,
                 borderRadius: 2,
                 p: 2,
               }}
@@ -126,8 +126,8 @@ export default function Board() {
               sx={{
                 minHeight: '100vh',
                 overflowY: 'auto',
-                bgcolor: 'background.paper',
-                boxShadow: 1,
+                bgcolor: 'common.background',
+                boxShadow: 5,
                 borderRadius: 2,
                 p: 2,
               }}
@@ -154,8 +154,8 @@ export default function Board() {
                   sx={{
                     height: '33.33%',
                     overflowY: 'auto',
-                    bgcolor: 'background.paper',
-                    boxShadow: 1,
+                    bgcolor: 'common.background',
+                    boxShadow: 5,
                     borderRadius: 2,
                     p: 2,
                   }}
@@ -171,8 +171,8 @@ export default function Board() {
                   sx={{
                     maxHeight: '33.33%',
                     overflowY: 'auto',
-                    bgcolor: 'background.paper',
-                    boxShadow: 1,
+                    bgcolor: 'common.background',
+                    boxShadow: 5,
                     borderRadius: 2,
                     p: 2,
                   }}
@@ -188,8 +188,8 @@ export default function Board() {
                   sx={{
                     height: '33.33%',
                     overflowY: 'auto',
-                    bgcolor: 'background.paper',
-                    boxShadow: 1,
+                    bgcolor: 'common.background',
+                    boxShadow: 5,
                     borderRadius: 2,
                     p: 2,
                   }}
