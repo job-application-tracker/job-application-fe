@@ -9,7 +9,6 @@ export default function Column({ id, list }) {
       <Droppable droppableId={id}>
         {(provided) => (
           <Stack
-            //MAKES THE DROP LOWER IN THE COLUMN
             sx={{ minHeight: '20vh' }}
             {...provided.droppableProps}
             ref={provided.innerRef}

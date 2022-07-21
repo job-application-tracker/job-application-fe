@@ -41,10 +41,3 @@ export default function AboutApp() {
     </Container>
   );
 }
-// {' '}
-//         <Typography
-//           variant="h5"
-//           sx={{ fontFamily: 'Fauna One', fontSize: '19px' }}
-//         >
-//           job.find()
-//         </Typography>{' '}
