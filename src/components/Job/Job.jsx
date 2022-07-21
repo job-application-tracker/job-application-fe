@@ -1,4 +1,4 @@
-import { Card } from '@mui/material';
+import { Card, Typography } from '@mui/material';
 import React from 'react';
 import { useState } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
@@ -60,7 +60,16 @@ export default function Job({
             {...provided.dragHandleProps}
             onDoubleClick={() => setEditing(true)}
           >
-            {position}
+            <Typography
+              sx={{ fontSize: 14 }}
+              color="text.secondary"
+              gutterBottom
+            >
+              {company}
+            </Typography>
+            <Typography variant="h5" component="div">
+              {position}
+            </Typography>
           </Card>
           <ModalForm
             open={editing}
