@@ -24,7 +24,7 @@ Instead, we help you track and visualize all of the components of your job searc
 
 ## Deployed Site:
 
-[View our deployed site on Netlify.](https://job-goal-tracker.netlify.app/)
+[View our deployed site on Netlify.](https://jobdotfind.netlify.app/)
 
 ## Our Plan:
 
